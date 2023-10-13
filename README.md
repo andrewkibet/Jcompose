@@ -7,4 +7,5 @@ Radio Button.
   2. Add information like accessibility labels. <br>
   3. Process user input. <br>
   4. Add high-level interactions, like making an element clickable, scrollable, draggable, or zoomable. <br>
-  5. 
+
+* Order of Compose functions matters.
