@@ -9,4 +9,7 @@ Allow you to augment or decorate Composables. It lets you do these  sorts of thi
   3. Process user input. <br>
   4. Add high-level interactions, like making an element clickable, scrollable, draggable, or zoomable. <br>
 
-* Order of Compose functions matters.
+* Order of Compose functions matters. <br> <br>
+
+If you want to access colors from resources in Jetpack Compose without declaring variables for each color, <br>
+you can do so by using the colorResource function directly in your Composable functions.
