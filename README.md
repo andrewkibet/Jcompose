@@ -1,9 +1,9 @@
 # Compose
-Starting from basics of Compose to advanced.
+Starting from the basics of Compose to advanced.
 Radio Button.
 
 **Modifiers**  https://developer.android.com/jetpack/compose/modifiers#:~:text=Modifiers%20allow%20you%20to%20decorate,Add%20information%2C%20like%20accessibility%20labels <br> 
-Allow you to augment or decorate Composables. It lets you to do these  sort of things: <br>
+Allow you to augment or decorate Composables. It lets you do these  sorts of things: <br>
   1. Change the composable size, layout, shape, layout, behavior and appearance. <br>
   2. Add information like accessibility labels. <br>
   3. Process user input. <br>
