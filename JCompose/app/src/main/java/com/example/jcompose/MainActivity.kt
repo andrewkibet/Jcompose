@@ -35,8 +35,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!",
-        color = Color.Red)
+    Surface(color=MaterialTheme.colors.primary){
+        Text(text = "Hello $name!",
+            color = Color.Red)
+    }
+
 }
 
 
