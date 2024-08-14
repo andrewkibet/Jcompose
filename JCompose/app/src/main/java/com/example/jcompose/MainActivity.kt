@@ -37,11 +37,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     Surface(color=MaterialTheme.colors.primary){
+        Column (){
             Text(text = "Hello !$name",
                 modifier = Modifier.padding(24.dp)
 
-        //    color = Color.Red
-        )
+                //    color = Color.Red
+            )
+
+        }
+
     }
 
 }
