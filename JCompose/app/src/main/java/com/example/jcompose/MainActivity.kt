@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -36,8 +37,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     Surface(color=MaterialTheme.colors.primary){
-        Text(text = "Hello $name!",
-            color = Color.Red)
+            Text(text = "Hello $name!",
+                modifier = Modifier.padding(24.dp)
+
+        //    color = Color.Red
+        )
     }
 
 }
