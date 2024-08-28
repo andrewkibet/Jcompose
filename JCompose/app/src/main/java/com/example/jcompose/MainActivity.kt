@@ -52,7 +52,7 @@ fun NameList(names: List<String>) {
 @Composable
 fun DefaultPreview() {
     JComposeTheme {
-        val names = listOf("Alice", "Bob", "Charlie", "David", "Eve", "Frank")
+        val names = listOf("Alice", "Bob", "Charlie", "David", "Eve", "Frank","Dennis","Caroline")
         NameList(names = names)
     }
 }
