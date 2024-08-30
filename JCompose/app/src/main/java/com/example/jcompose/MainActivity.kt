@@ -86,6 +86,7 @@ fun SocialMediaAppList(apps: List<ResolveInfo>, notificationCounts: Map<String, 
     }
 }
 
+
 @Composable
 fun SocialMediaAppItem(appName: String, icon: Drawable, notificationCount: Int, onClick: () -> Unit) {
     Row(
@@ -101,13 +102,21 @@ fun SocialMediaAppItem(appName: String, icon: Drawable, notificationCount: Int, 
             modifier = Modifier.size(40.dp)
         )
         Spacer(modifier = Modifier.width(16.dp))
-        Text(text = appName, style = MaterialTheme.typography.body1)
+        Text(
+            text = appName,
+            style = MaterialTheme.typography.body1
+        )
         Spacer(modifier = Modifier.weight(1f))
         if (notificationCount > 0) {
-            Text(text = notificationCount.toString(), style = MaterialTheme.typography.body2, color = Color.Red)
+            Text(
+                text = notificationCount.toString(),
+                style = MaterialTheme.typography.body2,
+                color = Color.Red
+            )
         }
     }
 }
+
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
