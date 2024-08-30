@@ -62,6 +62,8 @@ fun getInstalledSocialMediaApps(context: Context): List<ResolveInfo> {
         val packageName = app.activityInfo.packageName
         packageName.contains("facebook") ||
                 packageName.contains("twitter") ||
+                packageName.contains("whatsapp") ||
+
                 packageName.contains("instagram") ||
                 packageName.contains("linkedin") // Add other social media apps here
     }
