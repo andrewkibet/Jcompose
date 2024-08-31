@@ -1,3 +1,5 @@
+package com.example.jcompose
+
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import kotlinx.coroutines.flow.MutableStateFlow
