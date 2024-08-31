@@ -1,9 +1,9 @@
 package com.example.jcompose
 
-import MyNotificationListenerService
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -52,22 +52,26 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-fun getInstalledSocialMediaApps(context: Context): List<ResolveInfo> {
-    val packageManager = context.packageManager
-    val intent = Intent(Intent.ACTION_MAIN, null).apply {
-        addCategory(Intent.CATEGORY_LAUNCHER)
-    }
-    val allApps = packageManager.queryIntentActivities(intent, 0)
-    return allApps.filter { app ->
-        val packageName = app.activityInfo.packageName
-        packageName.contains("facebook") ||
-                packageName.contains("twitter") ||
-                packageName.contains("whatsapp") ||
 
-                packageName.contains("instagram") ||
-                packageName.contains("linkedin") // Add other social media apps here
+fun getSpecifiedApps(context: Context, specifiedAppPackages: List<String>): List<ResolveInfo> {
+    val packageManager = context.packageManager
+    val apps = mutableListOf<ResolveInfo>()
+
+    specifiedAppPackages.forEach { packageName ->
+        try {
+            val intent = packageManager.getLaunchIntentForPackage(packageName)
+            intent?.let {
+                val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+                resolveInfo?.let { apps.add(it) }
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+            // Handle the case where the app is not found (optional)
+        }
     }
+
+    return apps
 }
+
 
 @Composable
 fun SocialMediaAppList(apps: List<ResolveInfo>, notificationCounts: Map<String, Int>, context: Context) {
@@ -121,7 +125,13 @@ fun SocialMediaAppItem(appName: String, icon: Drawable, notificationCount: Int, 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {
     val context = LocalContext.current
-    val apps = getInstalledSocialMediaApps(context)
+    val specifiedAppPackages = listOf(
+        "com.facebook.katana", // Facebook
+        "com.instagram.android", // Instagram
+        "com.twitter.android", // Twitter
+        "com.whatsapp" // WhatsApp
+    )
+    val apps = getSpecifiedApps(context, specifiedAppPackages)
     val notificationCounts by viewModel.notificationCounts.collectAsState()
 
     SocialMediaAppList(apps, notificationCounts, context)
