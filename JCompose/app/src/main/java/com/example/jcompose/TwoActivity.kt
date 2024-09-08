@@ -47,7 +47,8 @@ fun MyAppComponents() {
                         IconButton(onClick = { /* Handle menu icon click */ }) {
                             Icon(Icons.Filled.Menu, contentDescription = "Menu Icon")
                         }
-                    }
+                    },
+                    backgroundColor = MaterialTheme.colors.primaryVariant
                 )
             },
             content = { innerPadding ->
