@@ -45,13 +45,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!hasNotificationListenerAccess(this)) {
-            // Request notification access if not granted
-            openNotificationSettings()
-        } else {
-            // Start the notification listener service
-            startService(Intent(this, MyNotificationListenerService::class.java))
-        }
+//        if (!hasNotificationListenerAccess(this)) {
+//            // Request notification access if not granted
+//            openNotificationSettings()
+//        } else {
+//            // Start the notification listener service
+//            startService(Intent(this, MyNotificationListenerService::class.java))
+//        }
 
         setContent {
             MainScreen(viewModel = viewModel)
@@ -63,134 +63,145 @@ class MainActivity : ComponentActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
+//
+//    private fun hasNotificationListenerAccess(context: Context): Boolean {
+//        val packageName = context.packageName
+//        val enabledListeners = Settings.Secure.getString(
+//            context.contentResolver,
+//            Settings.Secure.ENABLED_NOTIFICATION_LISTENERS
+//        )
+//        return enabledListeners.split(":").contains(packageName)
+//    }
+//}
 
-    private fun hasNotificationListenerAccess(context: Context): Boolean {
-        val packageName = context.packageName
-        val enabledListeners = Settings.Secure.getString(
-            context.contentResolver,
-            Settings.Secure.ENABLED_NOTIFICATION_LISTENERS
-        )
-        return enabledListeners.split(":").contains(packageName)
-    }
-}
+    class MyNotificationListenerService : NotificationListenerService() {
+        private val _notificationCounts = MutableStateFlow<Map<String, Int>>(emptyMap())
+        val notificationCounts: StateFlow<Map<String, Int>> = _notificationCounts
 
-class MyNotificationListenerService : NotificationListenerService() {
-    private val _notificationCounts = MutableStateFlow<Map<String, Int>>(emptyMap())
-    val notificationCounts: StateFlow<Map<String, Int>> = _notificationCounts
-
-    override fun onNotificationPosted(sbn: StatusBarNotification) {
-        val packageName = sbn.packageName
-        val currentCounts = _notificationCounts.value
-        val newCount = currentCounts[packageName]?.plus(1) ?: 1
-        _notificationCounts.value = currentCounts + (packageName to newCount)
-    }
-
-    override fun onNotificationRemoved(sbn: StatusBarNotification) {
-        val packageName = sbn.packageName
-        val currentCounts = _notificationCounts.value
-        val newCount = currentCounts[packageName]?.minus(1) ?: 0
-        if (newCount > 0) {
+        override fun onNotificationPosted(sbn: StatusBarNotification) {
+            val packageName = sbn.packageName
+            val currentCounts = _notificationCounts.value
+            val newCount = currentCounts[packageName]?.plus(1) ?: 1
             _notificationCounts.value = currentCounts + (packageName to newCount)
-        } else {
-            _notificationCounts.value = currentCounts - packageName
         }
-    }
-}
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-    private val _notificationCounts = MutableStateFlow<Map<String, Int>>(emptyMap())
-    val notificationCounts: StateFlow<Map<String, Int>> = _notificationCounts
-
-    private val listenerService = MyNotificationListenerService()
-
-    init {
-        viewModelScope.launch {
-            listenerService.notificationCounts.collectLatest { counts ->
-                _notificationCounts.value = counts
+        override fun onNotificationRemoved(sbn: StatusBarNotification) {
+            val packageName = sbn.packageName
+            val currentCounts = _notificationCounts.value
+            val newCount = currentCounts[packageName]?.minus(1) ?: 0
+            if (newCount > 0) {
+                _notificationCounts.value = currentCounts + (packageName to newCount)
+            } else {
+                _notificationCounts.value = currentCounts - packageName
             }
         }
     }
-}
 
-@Composable
-fun SocialMediaAppList(apps: List<ResolveInfo>, notificationCounts: Map<String, Int>, context: Context) {
-    LazyColumn {
-        items(apps) { app ->
-            val packageName = app.activityInfo.packageName
-            val appName = app.loadLabel(context.packageManager).toString()
-            val icon = app.loadIcon(context.packageManager)
-            val notificationCount = notificationCounts[packageName] ?: 0
+    class MainViewModel(application: Application) : AndroidViewModel(application) {
+        private val _notificationCounts = MutableStateFlow<Map<String, Int>>(emptyMap())
+        val notificationCounts: StateFlow<Map<String, Int>> = _notificationCounts
 
-            SocialMediaAppItem(appName, icon, notificationCount) {
-                val launchIntent = context.packageManager.getLaunchIntentForPackage(packageName)
-                launchIntent?.let { context.startActivity(it) }
+        private val listenerService = MyNotificationListenerService()
+
+        init {
+            viewModelScope.launch {
+                listenerService.notificationCounts.collectLatest { counts ->
+                    _notificationCounts.value = counts
+                }
             }
         }
     }
-}
 
-@Composable
-fun SocialMediaAppItem(appName: String, icon: Drawable, notificationCount: Int, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .clickable { onClick() },
-        verticalAlignment = Alignment.CenterVertically
+    @Composable
+    fun SocialMediaAppList(
+        apps: List<ResolveInfo>,
+        notificationCounts: Map<String, Int>,
+        context: Context
     ) {
-        Image(
-            bitmap = icon.toBitmap().asImageBitmap(),
-            contentDescription = appName,
-            modifier = Modifier.size(40.dp)
-        )
-        Spacer(modifier = Modifier.width(16.dp))
-        Text(
-            text = appName,
-            style = MaterialTheme.typography.body1
-        )
-        Spacer(modifier = Modifier.weight(1f))
-        if (notificationCount > 0) {
-            Text(
-                text = notificationCount.toString(),
-                style = MaterialTheme.typography.body2.copy(color = Color.Red),
-                modifier = Modifier
-                    .background(Color.Gray, shape = CircleShape)
-                    .padding(horizontal = 8.dp, vertical = 4.dp)
-            )
-        }
-    }
-}
+        LazyColumn {
+            items(apps) { app ->
+                val packageName = app.activityInfo.packageName
+                val appName = app.loadLabel(context.packageManager).toString()
+                val icon = app.loadIcon(context.packageManager)
+                val notificationCount = notificationCounts[packageName] ?: 0
 
-@Composable
-fun MainScreen(viewModel: MainViewModel) {
-    val context = LocalContext.current
-    val specifiedAppPackages = listOf(
-        "com.facebook.katana", // Facebook
-        "com.instagram.android", // Instagram
-        "com.twitter.android", // Twitter
-        "com.whatsapp" // WhatsApp
-    )
-    val apps = getSpecifiedApps(context, specifiedAppPackages)
-    val notificationCounts by viewModel.notificationCounts.collectAsState()
-
-    SocialMediaAppList(apps, notificationCounts, context)
-}
-
-fun getSpecifiedApps(context: Context, specifiedAppPackages: List<String>): List<ResolveInfo> {
-    val packageManager = context.packageManager
-    val apps = mutableListOf<ResolveInfo>()
-
-    specifiedAppPackages.forEach { packageName ->
-        try {
-            val intent = packageManager.getLaunchIntentForPackage(packageName)
-            intent?.let {
-                val resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
-                resolveInfo?.let { apps.add(it) }
+                SocialMediaAppItem(appName, icon, notificationCount) {
+                    val launchIntent = context.packageManager.getLaunchIntentForPackage(packageName)
+                    launchIntent?.let { context.startActivity(it) }
+                }
             }
-        } catch (e: PackageManager.NameNotFoundException) {
-            // Handle the case where the app is not found (optional)
         }
     }
 
-    return apps
+    @Composable
+    fun SocialMediaAppItem(
+        appName: String,
+        icon: Drawable,
+        notificationCount: Int,
+        onClick: () -> Unit
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .clickable { onClick() },
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Image(
+                bitmap = icon.toBitmap().asImageBitmap(),
+                contentDescription = appName,
+                modifier = Modifier.size(40.dp)
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(
+                text = appName,
+                style = MaterialTheme.typography.body1
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            if (notificationCount > 0) {
+                Text(
+                    text = notificationCount.toString(),
+                    style = MaterialTheme.typography.body2.copy(color = Color.Red),
+                    modifier = Modifier
+                        .background(Color.Gray, shape = CircleShape)
+                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                )
+            }
+        }
+    }
+
+    @Composable
+    fun MainScreen(viewModel: MainViewModel) {
+        val context = LocalContext.current
+        val specifiedAppPackages = listOf(
+            "com.facebook.katana", // Facebook
+            "com.instagram.android", // Instagram
+            "com.twitter.android", // Twitter
+            "com.whatsapp" // WhatsApp
+        )
+        val apps = getSpecifiedApps(context, specifiedAppPackages)
+        val notificationCounts by viewModel.notificationCounts.collectAsState()
+
+        SocialMediaAppList(apps, notificationCounts, context)
+    }
+
+    fun getSpecifiedApps(context: Context, specifiedAppPackages: List<String>): List<ResolveInfo> {
+        val packageManager = context.packageManager
+        val apps = mutableListOf<ResolveInfo>()
+
+        specifiedAppPackages.forEach { packageName ->
+            try {
+                val intent = packageManager.getLaunchIntentForPackage(packageName)
+                intent?.let {
+                    val resolveInfo =
+                        packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+                    resolveInfo?.let { apps.add(it) }
+                }
+            } catch (e: PackageManager.NameNotFoundException) {
+                // Handle the case where the app is not found (optional)
+            }
+        }
+
+        return apps
+    }
 }
