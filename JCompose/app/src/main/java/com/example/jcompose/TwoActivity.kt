@@ -15,6 +15,8 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -47,6 +49,15 @@ fun MyAppComponents() {
                         IconButton(onClick = { /* Handle menu icon click */ }) {
                             Icon(Icons.Filled.Menu, contentDescription = "Menu Icon")
                         }
+                    },
+                    actions = {
+
+                       IconButton(onClick = { /*TODO*/ }) {
+                           Icon(Icons.Filled.Search, contentDescription = "Sch")
+                       }
+                        IconButton(onClick = { /*TODO*/ }) {
+
+                            Icon(Icons.Filled.Share, contentDescription = "Share")                       }
                     },
                     backgroundColor = MaterialTheme.colors.primaryVariant
                 )
