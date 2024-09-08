@@ -8,6 +8,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -15,6 +17,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Scaffold
@@ -22,10 +25,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
+import androidx.compose.runtime.*
 
 class TwoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +47,10 @@ class TwoActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyAppComponents() {
+
+    // Properly initialize the expanded state using remember and mutableStateOf
+    var expanded by remember { mutableStateOf(false) }
+
     MaterialTheme {
         Scaffold(
             topBar = {
@@ -57,7 +68,20 @@ fun MyAppComponents() {
                        }
                         IconButton(onClick = { /*TODO*/ }) {
 
-                            Icon(Icons.Filled.Share, contentDescription = "Share")                       }
+                            Icon(Icons.Filled.Share, contentDescription = "Share")
+                        }
+                        IconButton(onClick = { expanded = true }) {
+                            Icon(Icons.Filled.MoreVert,contentDescription ="Overflow" )
+                        }
+                        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }
+                        ) {
+                            DropdownMenuItem(onClick = { expanded = false }) 
+                            {
+                                Text(text = "Settings")
+                                
+                            }
+                            
+                        }
                     },
                     backgroundColor = MaterialTheme.colors.primaryVariant
                 )
