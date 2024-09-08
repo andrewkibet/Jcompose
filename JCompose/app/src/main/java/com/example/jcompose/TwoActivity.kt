@@ -1,19 +1,28 @@
 package com.example.jcompose
 
 import android.os.Bundle
-
+import androidx.compose.material.TopAppBar
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.graphics.Color
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.ExperimentalMaterial3Api
+
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 
 class TwoActivity : ComponentActivity() {
@@ -26,21 +35,39 @@ class TwoActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyAppComponents() {
     MaterialTheme {
-        Surface (modifier = Modifier.fillMaxSize(),
-           // color = MaterialTheme.colors.background
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "My App") },
+                    navigationIcon = {
+                        IconButton(onClick = { /* Handle menu icon click */ }) {
+                            Icon(Icons.Filled.Menu, contentDescription = "Menu Icon")
+                        }
+                    }
+                )
+            },
+            content = { innerPadding ->
+                Box(modifier = Modifier.padding(innerPadding)) {
+                    Text(
+                        text = "Working on SocialM",
+                        modifier = Modifier.padding(16.dp), // Add padding for better layout
+                        style = MaterialTheme.typography.h6 // Optional text style
+                    )
+                }
+            }
         )
-        {
-Text(text = "Andrew")
-        }
     }
-
 }
+
+
+
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun PreviewApp() {
     MyAppComponents()
 }
