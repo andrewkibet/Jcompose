@@ -157,8 +157,13 @@ class MainActivity : ComponentActivity() {
                 text = appName,
                 style = MaterialTheme.typography.body1
             )
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(
+                text = "Next",
+                style = MaterialTheme.typography.body1)
+
             Spacer(modifier = Modifier.weight(1f))
-            if (notificationCount > 0) {
+            if (notificationCount >= 0) {
                 Text(
                     text = notificationCount.toString(),
                     style = MaterialTheme.typography.body2.copy(color = Color.Red),
