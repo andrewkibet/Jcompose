@@ -1,5 +1,6 @@
 package com.example.jcompose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.compose.material.TopAppBar
 import androidx.activity.ComponentActivity
@@ -41,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.material.*
+import androidx.compose.ui.platform.LocalContext
 
 
 class TwoActivity : ComponentActivity() {
@@ -59,6 +61,7 @@ fun MyAppComponents() {
 
     // Properly initialize the expanded state using remember and mutableStateOf
     var expanded by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     MaterialTheme {
         Scaffold(
@@ -118,11 +121,14 @@ fun MyAppComponents() {
 
             },
             floatingActionButton = {
-                FloatingActionButton(onClick = { /* Handle FAB click */ }) {
+                FloatingActionButton(onClick = {
+                    val intent = Intent(context,MainActivity::class.java)
+                    context.startActivity(intent)
+                }) {
                     Icon(Icons.Filled.Add, contentDescription = "FAB Icon")
                 }
             },
-            floatingActionButtonPosition = FabPosition.Center, // Center the FAB on the bottom bar
+            floatingActionButtonPosition = FabPosition.End, // Center the FAB on the bottom bar
             isFloatingActionButtonDocked = true, // Dock the FAB on the BottomAppBar // Dock the FAB on the BottomAppBar
             content = { innerPadding ->
                 Box(modifier = Modifier.padding(innerPadding)) {
