@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.FabPosition
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -19,11 +20,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,6 +40,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
+import androidx.compose.material.*
+
 
 class TwoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,7 +97,7 @@ fun MyAppComponents() {
                             
                         }
                     },
-                    backgroundColor = MaterialTheme.colors.primaryVariant
+                    backgroundColor = MaterialTheme.colors.secondary
                 )
             },
             bottomBar = {
@@ -112,6 +117,13 @@ fun MyAppComponents() {
            )
 
             },
+            floatingActionButton = {
+                FloatingActionButton(onClick = { /* Handle FAB click */ }) {
+                    Icon(Icons.Filled.Add, contentDescription = "FAB Icon")
+                }
+            },
+            floatingActionButtonPosition = FabPosition.Center, // Center the FAB on the bottom bar
+            isFloatingActionButtonDocked = true, // Dock the FAB on the BottomAppBar // Dock the FAB on the BottomAppBar
             content = { innerPadding ->
                 Box(modifier = Modifier.padding(innerPadding)) {
                     Text(
