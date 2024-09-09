@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomAppBar
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
@@ -17,6 +18,9 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
@@ -80,11 +84,33 @@ fun MyAppComponents() {
                                 Text(text = "Settings")
                                 
                             }
+                            DropdownMenuItem(onClick = { expanded = false })
+                            {
+                                Text(text = "Privacy")
+
+                            }
                             
                         }
                     },
                     backgroundColor = MaterialTheme.colors.primaryVariant
                 )
+            },
+            bottomBar = {
+           BottomAppBar(
+               backgroundColor = MaterialTheme.colors.secondary,
+               content = {
+                   IconButton(onClick = { /*TODO*/ }) {
+                       Icon(Icons.Filled.AccountBox, contentDescription = "Account")
+                   }
+                   IconButton(onClick = { /*TODO*/ }) {
+                       Icon(Icons.Filled.Call, contentDescription = "Account")
+                   }
+                   IconButton(onClick = { /*TODO*/ }) {
+                       Icon(Icons.Filled.Email, contentDescription = "Account")
+                   }
+               }
+           )
+
             },
             content = { innerPadding ->
                 Box(modifier = Modifier.padding(innerPadding)) {
