@@ -43,41 +43,45 @@ import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.material.*
 import androidx.compose.ui.platform.LocalContext
-
+import kotlinx.coroutines.launch
 
 class TwoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-        MyAppComponents()
-
+            MyAppComponents()
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyAppComponents() {
 
     // Properly initialize the expanded state using remember and mutableStateOf
     var expanded by remember { mutableStateOf(false) }
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val scaffoldState = rememberScaffoldState() // Control the scaffold's drawer state
 
     MaterialTheme {
         Scaffold(
+            scaffoldState = scaffoldState,  // Pass scaffold state to control drawer
             topBar = {
                 TopAppBar(
                     title = { Text(text = "My App") },
                     navigationIcon = {
-                        IconButton(onClick = { /* Handle menu icon click */ }) {
+                        IconButton(onClick = {
+                            scope.launch {
+                                scaffoldState.drawerState.open() // Open the drawer when menu is clicked
+                            }
+                        }) {
                             Icon(Icons.Filled.Menu, contentDescription = "Menu Icon")
                         }
                     },
                     actions = {
-
-                       IconButton(onClick = { /*TODO*/ }) {
-                           Icon(Icons.Filled.Search, contentDescription = "Sch")
-                       }
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.Search, contentDescription = "Sch")
+                        }
                         IconButton(onClick = { /*TODO*/ }) {
 
                             Icon(Icons.Filled.Share, contentDescription = "Share")
@@ -87,64 +91,64 @@ fun MyAppComponents() {
                         }
                         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }
                         ) {
-                            DropdownMenuItem(onClick = { expanded = false }) 
+                            DropdownMenuItem(onClick = { expanded = false })
                             {
                                 Text(text = "Settings")
-                                
+
                             }
                             DropdownMenuItem(onClick = { expanded = false })
                             {
                                 Text(text = "Privacy")
 
                             }
-                            
+
                         }
                     },
                     backgroundColor = MaterialTheme.colors.secondary
                 )
             },
             bottomBar = {
-           BottomAppBar(
-               backgroundColor = MaterialTheme.colors.secondary,
-               content = {
-                   IconButton(onClick = { /*TODO*/ }) {
-                       Icon(Icons.Filled.AccountBox, contentDescription = "Account")
-                   }
-                   IconButton(onClick = { /*TODO*/ }) {
-                       Icon(Icons.Filled.Call, contentDescription = "Account")
-                   }
-                   IconButton(onClick = { /*TODO*/ }) {
-                       Icon(Icons.Filled.Email, contentDescription = "Account")
-                   }
-               }
-           )
-
+                BottomAppBar(
+                    backgroundColor = MaterialTheme.colors.secondary,
+                    content = {
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.Call, contentDescription = "Call")
+                        }
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(Icons.Filled.Email, contentDescription = "Email")
+                        }
+                    }
+                )
             },
             floatingActionButton = {
                 FloatingActionButton(onClick = {
-                    val intent = Intent(context,MainActivity::class.java)
+                    val intent = Intent(context, MainActivity::class.java)
                     context.startActivity(intent)
                 }) {
                     Icon(Icons.Filled.Add, contentDescription = "FAB Icon")
                 }
             },
-            floatingActionButtonPosition = FabPosition.End, // Center the FAB on the bottom bar
-            isFloatingActionButtonDocked = true, // Dock the FAB on the BottomAppBar // Dock the FAB on the BottomAppBar
+            drawerContent = {
+                // Drawer content goes here
+                Text(text = "Drawer Item 1", modifier = Modifier.padding(16.dp))
+                Text(text = "Drawer Item 2", modifier = Modifier.padding(16.dp))
+                Text(text = "Drawer Item 3", modifier = Modifier.padding(16.dp))
+                Divider() // Optional: Add a divider for better UI
+                Text(text = "Drawer Item 4", modifier = Modifier.padding(16.dp))
+            },
             content = { innerPadding ->
-                Box(modifier = Modifier.padding(innerPadding)) {
+                Box(modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()) {
                     Text(
                         text = "Working on SocialM",
-                        modifier = Modifier.padding(16.dp), // Add padding for better layout
-                        style = MaterialTheme.typography.h6 // Optional text style
+                        modifier = Modifier.padding(16.dp)
                     )
                 }
             }
         )
     }
 }
-
-
-
 
 @Preview(showBackground = true)
 @Composable
