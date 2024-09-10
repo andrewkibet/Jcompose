@@ -91,7 +91,11 @@ fun MyAppComponents() {
                         }
                         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }
                         ) {
-                            DropdownMenuItem(onClick = { expanded = false })
+                            DropdownMenuItem(onClick = {
+                                expanded = false
+                                val intent = Intent(context,ThirdActivity::class.java)
+                                context.startActivity(intent)
+                            })
                             {
                                 Text(text = "Settings")
 
