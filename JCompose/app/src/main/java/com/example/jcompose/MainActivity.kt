@@ -48,6 +48,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
 
@@ -195,9 +196,14 @@ class MainActivity : ComponentActivity() {
         )
         val apps = getSpecifiedApps(context, specifiedAppPackages)
         val notificationCounts by viewModel.notificationCounts.collectAsState()
-        val scaffoldState= rememberScaffoldState()
+
+        // Remember the scaffold state (to control the drawer's open/close state)
+        val scaffoldState = rememberScaffoldState()
+
+        // Coroutine scope to launch suspend functions
         val scope = rememberCoroutineScope()
 
+        // Scaffold containing the TopAppBar, Drawer, and Main Content
         Scaffold(
             scaffoldState = scaffoldState, // Make sure to pass scaffoldState here
             topBar = {
@@ -259,12 +265,7 @@ class MainActivity : ComponentActivity() {
                 text = label,
                 style = MaterialTheme.typography.body1 // Use Material theme typography for better text styling
             )
-           }
-
-
-
-
-
+        }
     }
 
     fun getSpecifiedApps(context: Context, specifiedAppPackages: List<String>): List<ResolveInfo> {
