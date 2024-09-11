@@ -20,15 +20,24 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
@@ -186,8 +195,76 @@ class MainActivity : ComponentActivity() {
         )
         val apps = getSpecifiedApps(context, specifiedAppPackages)
         val notificationCounts by viewModel.notificationCounts.collectAsState()
+        val scaffoldState= rememberScaffoldState()
+        val scope = rememberCoroutineScope()
 
-        SocialMediaAppList(apps, notificationCounts, context)
+        Scaffold(
+            scaffoldState = scaffoldState, // Make sure to pass scaffoldState here
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Social Media Apps") },
+                    navigationIcon = {
+                        IconButton(onClick = {
+                            // Launch a coroutine to open the drawer
+                            scope.launch {
+                                scaffoldState.drawerState.open() // Open the drawer when menu is clicked
+                            }
+                        }) {
+                            Icon(Icons.Filled.Menu, contentDescription = "Menu")
+                        }
+                    }
+                )
+            },
+            drawerContent = {
+                // Drawer content
+                Column(modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+
+                ) {
+                    DrawerItem(icon= Icons.Filled.Menu, label="Home")
+                }
+            },
+            content = { paddingValues ->
+                // Main Content inside Scaffold
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize() // Ensure it takes up the full screen size
+                        .padding(paddingValues) // Padding added by Scaffold
+                ) {
+                    SocialMediaAppList(apps = apps, notificationCounts = notificationCounts, context = context)
+                }
+            }
+        )
+    }
+
+
+
+    @Composable
+    fun DrawerItem(icon: ImageVector, label: String) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp), // Add padding around each drawer item
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = label,
+                modifier = Modifier.size(24.dp),
+                tint = Color.Gray
+            )
+            Spacer(modifier = Modifier.width(16.dp)) // Space between icon and text
+            Text(
+                text = label,
+                style = MaterialTheme.typography.body1 // Use Material theme typography for better text styling
+            )
+           }
+
+
+
+
+
     }
 
     fun getSpecifiedApps(context: Context, specifiedAppPackages: List<String>): List<ResolveInfo> {
