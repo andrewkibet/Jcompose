@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.Divider
 import androidx.compose.material.DrawerValue
@@ -44,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 import kotlinx.coroutines.launch
 import androidx.compose.material.*
+import androidx.compose.material.icons.filled.AccountBox
 
 
 class ThirdActivity : ComponentActivity() {
@@ -67,12 +69,25 @@ fun ThirdComponents(){
     ModalDrawer(
         drawerState = drawerState,
         drawerContent = {
-            // Drawer content here
-            Text(text = "Item 1", modifier = Modifier.padding(16.dp))
-            Text(text = "Item 2", modifier = Modifier.padding(16.dp))
-            Text(text = "Item 3", modifier = Modifier.padding(16.dp))
-            Divider()
-            Text(text = "Item 4", modifier = Modifier.padding(16.dp))
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)) {
+
+                // Add profile image (use a placeholder here)
+                Icon(
+                    imageVector = Icons.Default.AccountBox, // Use an appropriate image vector for the profile
+                    contentDescription = "Profile Image",
+                    modifier = Modifier
+                        .size(64.dp)
+                        .padding(bottom = 8.dp)
+                )
+
+                // User name or account info
+                Text(text = "John Doe", style = MaterialTheme.typography.h6)
+                Text(text = "johndoe@gmail.com", style = MaterialTheme.typography.body2)
+            }
+
+            Divider(modifier = Modifier.padding(vertical = 8.dp))
         },
         content = {
             Scaffold(
