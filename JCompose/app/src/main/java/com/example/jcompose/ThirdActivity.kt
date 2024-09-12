@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
-
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -42,63 +42,68 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jcompose.ui.theme.JComposeTheme
 import kotlinx.coroutines.launch
 import androidx.compose.material.*
 import androidx.compose.material.icons.filled.AccountBox
 
-
 class ThirdActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
-         ThirdComponents()
+            ThirdComponents()
         }
     }
 }
 
 @Composable
-fun ThirdComponents(){
-    // Properly initialize the expanded state using remember and mutableStateOf
-    val scaffoldState = rememberScaffoldState()
+fun ThirdComponents() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
+
     ModalDrawer(
         drawerState = drawerState,
         drawerContent = {
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    // Add profile image
+                    Icon(
+                        imageVector = Icons.Default.AccountBox,
+                        contentDescription = "Profile Image",
+                        modifier = Modifier
+                            .size(64.dp)
+                            .padding(bottom = 8.dp)
+                    )
 
-                // Add profile image (use a placeholder here)
-                Icon(
-                    imageVector = Icons.Default.AccountBox, // Use an appropriate image vector for the profile
-                    contentDescription = "Profile Image",
-                    modifier = Modifier
-                        .size(64.dp)
-                        .padding(bottom = 8.dp)
-                )
+                    // User details
+                    Text(text = "John Doe", style = MaterialTheme.typography.h6)
+                    Text(text = "johndoe@gmail.com", style = MaterialTheme.typography.body2)
 
-                // User name or account info
-                Text(text = "John Doe", style = MaterialTheme.typography.h6)
-                Text(text = "johndoe@gmail.com", style = MaterialTheme.typography.body2)
+                    Divider(modifier = Modifier.padding(vertical = 8.dp))
+
+                    // Drawer menu items
+                    Text(text = "Item 1", modifier = Modifier.padding(vertical = 8.dp))
+                    Text(text = "Item 2", modifier = Modifier.padding(vertical = 8.dp))
+                    Text(text = "Item 3", modifier = Modifier.padding(vertical = 8.dp))
+                    Divider()
+                    Text(text = "Item 4", modifier = Modifier.padding(vertical = 8.dp))
+                }
             }
-
-            Divider(modifier = Modifier.padding(vertical = 8.dp))
         },
         content = {
             Scaffold(
-                scaffoldState = scaffoldState,  // Pass scaffold state to control drawer
                 topBar = {
                     TopAppBar(
                         title = { Text(text = "My App") },
                         navigationIcon = {
                             IconButton(onClick = {
                                 scope.launch {
-                                    scaffoldState.drawerState.open() // Open the drawer when menu is clicked
+                                    drawerState.open()  // Open drawer here
                                 }
                             }) {
                                 Icon(Icons.Filled.Menu, contentDescription = "Menu Icon")
@@ -106,32 +111,21 @@ fun ThirdComponents(){
                         },
                         actions = {
                             IconButton(onClick = { /*TODO*/ }) {
-                                Icon(Icons.Filled.Search, contentDescription = "Sch")
+                                Icon(Icons.Filled.Search, contentDescription = "Search")
                             }
                             IconButton(onClick = { /*TODO*/ }) {
-
                                 Icon(Icons.Filled.Share, contentDescription = "Share")
                             }
                             IconButton(onClick = { expanded = true }) {
-                                Icon(Icons.Filled.MoreVert,contentDescription ="Overflow" )
+                                Icon(Icons.Filled.MoreVert, contentDescription = "Overflow")
                             }
-                            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }
-                            ) {
-                                DropdownMenuItem(onClick = {
-                                    expanded = false
-                                    val intent = Intent(context,ThirdActivity::class.java)
-                                    context.startActivity(intent)
-                                })
-                                {
+                            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                                DropdownMenuItem(onClick = { expanded = false }) {
                                     Text(text = "Settings")
-
                                 }
-                                DropdownMenuItem(onClick = { expanded = false })
-                                {
+                                DropdownMenuItem(onClick = { expanded = false }) {
                                     Text(text = "Privacy")
-
                                 }
-
                             }
                         },
                         backgroundColor = MaterialTheme.colors.secondary
@@ -158,22 +152,13 @@ fun ThirdComponents(){
                         Icon(Icons.Filled.Add, contentDescription = "FAB Icon")
                     }
                 },
-                drawerContent = {
-                    // Drawer content goes here
-                    Text(text = "Drawer Item 1", modifier = Modifier.padding(16.dp))
-                    Text(text = "Drawer Item 2", modifier = Modifier.padding(16.dp))
-                    Text(text = "Drawer Item 3", modifier = Modifier.padding(16.dp))
-                    Divider() // Optional: Add a divider for better UI
-                    Text(text = "Drawer Item 4", modifier = Modifier.padding(16.dp))
-                },
                 content = { innerPadding ->
-                    Box(modifier = Modifier
-                        .padding(innerPadding)
-                        .fillMaxSize()) {
-                        Text(
-                            text = "Working on SocialM",
-                            modifier = Modifier.padding(16.dp)
-                        )
+                    Box(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize()
+                    ) {
+                        Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
                     }
                 }
             )
@@ -181,10 +166,8 @@ fun ThirdComponents(){
     )
 }
 
-
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-   ThirdComponents()
+    ThirdComponents()
 }
