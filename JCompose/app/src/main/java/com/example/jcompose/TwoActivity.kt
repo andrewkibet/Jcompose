@@ -115,7 +115,10 @@ fun MyAppComponents() {
                 BottomAppBar(
                     backgroundColor = MaterialTheme.colors.secondary,
                     content = {
-                        IconButton(onClick = { /*TODO*/ }) {
+                        IconButton(onClick = { /*TODO*/
+                            val intent = Intent(context,ThirdActivity::class.java)
+                            context.startActivity(intent)
+                        }) {
                             Icon(Icons.Filled.Call, contentDescription = "Call")
                         }
                         IconButton(onClick = { /*TODO*/ }) {
