@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -70,31 +72,45 @@ fun ThirdComponents() {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(16.dp)
-                    .width(200.dp)
+                    .width(80.dp)
 
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(modifier = Modifier
+                    .padding(16.dp)
+                    .background(color = MaterialTheme.colors.onSurface)
+
+                ) {
                     // Add profile image
-                    Icon(
-                        imageVector = Icons.Default.AccountBox,
-                        contentDescription = "Profile Image",
+                    Box(
                         modifier = Modifier
-                            .size(64.dp)
-                            .padding(bottom = 8.dp)
-                    )
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colors.primary) // Background for account section
+                            .padding(16.dp)
+                    ){ Column() {
+                        Icon(
+                            imageVector = Icons.Default.AccountBox,
+                            contentDescription = "Profile Image",
+                            modifier = Modifier
+                                .size(64.dp)
+                                .padding(bottom = 8.dp)
 
-                    // User details
-                    Text(text = "John Doe", style = MaterialTheme.typography.h6)
-                    Text(text = "johndoe@gmail.com", style = MaterialTheme.typography.body2)
+                        )
 
-                    Divider(modifier = Modifier.padding(vertical = 8.dp))
+                        // User details
+                        Text(text = "John Doe", style = MaterialTheme.typography.h6)
+                        Text(text = "johndoe@gmail.com", style = MaterialTheme.typography.body2)
+                    }
+
+                    }
+
+                   Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                     // Drawer menu items
                     Text(text = "Item 1", modifier = Modifier.padding(vertical = 8.dp))
                     Text(text = "Item 2", modifier = Modifier.padding(vertical = 8.dp))
                     Text(text = "Item 3", modifier = Modifier.padding(vertical = 8.dp))
-                    Divider()
                     Text(text = "Item 4", modifier = Modifier.padding(vertical = 8.dp))
+                    Divider()
                 }
             }
         },
