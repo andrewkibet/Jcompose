@@ -178,6 +178,8 @@ fun ThirdComponents() {
                             .fillMaxSize()
                     ) {
                         Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
+
+                        Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
                     }
                 }
             )
