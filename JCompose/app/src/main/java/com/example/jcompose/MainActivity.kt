@@ -226,6 +226,7 @@ class MainActivity : ComponentActivity() {
                 Column(modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
+                    .background(color = MaterialTheme.colors.surface)
 
                 ) {
                     DrawerItem(icon= Icons.Filled.Menu, label="Home")
