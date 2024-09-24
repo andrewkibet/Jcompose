@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -70,14 +71,14 @@ fun ThirdComponents() {
         drawerContent = {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxHeight()
                     .padding(16.dp)
-                    .width(80.dp)
+                    .width(280.dp)
 
             ) {
                 Column(modifier = Modifier
-                    .padding(16.dp)
-                    .background(color = MaterialTheme.colors.onSurface)
+                    .fillMaxHeight()
+                    
 
                 ) {
                     // Add profile image
