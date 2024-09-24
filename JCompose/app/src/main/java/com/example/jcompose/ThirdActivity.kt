@@ -147,12 +147,12 @@ fun ThirdComponents() {
                                 }
                             }
                         },
-                        backgroundColor = MaterialTheme.colors.secondary
+                        backgroundColor = MaterialTheme.colors.primarySurface
                     )
                 },
                 bottomBar = {
                     BottomAppBar(
-                        backgroundColor = MaterialTheme.colors.secondary,
+                        backgroundColor = MaterialTheme.colors.primarySurface,
                         content = {
                             IconButton(onClick = { /*TODO*/ }) {
                                 Icon(Icons.Filled.Call, contentDescription = "Call")
