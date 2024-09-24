@@ -148,14 +148,18 @@ fun MyAppComponents() {
                     .padding(innerPadding)
                     .fillMaxSize()) {
                     Text(
-                        text = "Working on SocialM" +
-                                "I have wrapped my drawer content in Scaffold",
+                        text ="""
+                            Working on SocialM
+                                I have wrapped my drawer content in Scaffold
+                                """.trimIndent(),
                         modifier = Modifier.padding(16.dp)
                     )
                 }
             }
         )
     }
+
+    //0762738873- Mama Joy
 }
 
 @Preview(showBackground = true)
