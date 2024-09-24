@@ -118,7 +118,7 @@ fun ThirdComponents() {
             Scaffold(
                 topBar = {
                     TopAppBar(
-                        title = { Text(text = "My App") },
+                        title = { Text(text = "Modal Drawer") },
                         navigationIcon = {
                             IconButton(onClick = {
                                 scope.launch {
