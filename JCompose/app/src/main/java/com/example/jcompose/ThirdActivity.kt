@@ -85,7 +85,7 @@ fun ThirdComponents() {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(MaterialTheme.colors.primary) // Background for account section
+                         //    .background(MaterialTheme.colors.primary) // Background for account section
                             .padding(16.dp)
                     ){ Column() {
                         Icon(
