@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -49,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import androidx.compose.material.*
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Star
 
 class ThirdActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,7 +87,7 @@ fun ThirdComponents() {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                         //    .background(MaterialTheme.colors.primary) // Background for account section
+                            //    .background(MaterialTheme.colors.primary) // Background for account section
                             .padding(16.dp)
                     ){ Column() {
                         Icon(
@@ -111,6 +113,16 @@ fun ThirdComponents() {
                     Text(text = "Item 2", modifier = Modifier.padding(vertical = 8.dp))
                     Text(text = "Item 3", modifier = Modifier.padding(vertical = 8.dp))
                     Text(text = "Item 4", modifier = Modifier.padding(vertical = 8.dp))
+
+                   Row(
+                      modifier = Modifier
+                          .fillMaxWidth()
+                          .padding(vertical = 8.dp)
+                   ){
+                       Icon(Icons.Filled.Star, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
+                       Text(text = "Rate us")
+                   }
+
                     Divider()
                 }
             }
