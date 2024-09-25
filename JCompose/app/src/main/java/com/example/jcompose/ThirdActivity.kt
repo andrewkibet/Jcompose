@@ -50,6 +50,8 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import androidx.compose.material.*
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
 
 class ThirdActivity : ComponentActivity() {
@@ -109,18 +111,37 @@ fun ThirdComponents() {
                    Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                     // Drawer menu items
-                    Text(text = "Item 1", modifier = Modifier.padding(vertical = 8.dp))
-                    Text(text = "Item 2", modifier = Modifier.padding(vertical = 8.dp))
-                    Text(text = "Item 3", modifier = Modifier.padding(vertical = 8.dp))
-                    Text(text = "Item 4", modifier = Modifier.padding(vertical = 8.dp))
-
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    ){
+                        Icon(Icons.Filled.Star, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
+                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    ){
+                        Icon(Icons.Filled.Refresh, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
+                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    ){
+                        Icon(Icons.Filled.Email, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
+                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
+                    }
                    Row(
                       modifier = Modifier
                           .fillMaxWidth()
                           .padding(vertical = 8.dp)
                    ){
-                       Icon(Icons.Filled.Star, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
-                       Text(text = "Rate us")
+                       Icon(Icons.Filled.Favorite, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
+                       Text(text = "Rate us",style = MaterialTheme.typography.body1)
                    }
 
                     Divider()
