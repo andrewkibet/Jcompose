@@ -3,6 +3,22 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+//Nox
+/*
+task connectNoxToADB(type: Exec) {
+    commandLine "cmd", "/c", "\"C:/Program Files (x86)/Nox/bin/nox_adb.exe\"", "connect", "127.0.0.1:62001"
+    // Capture standard output and error
+    doLast {
+        println "stdout: ${standardOutput.toString()}"
+        println "stderr: ${errorOutput.toString()}"
+    }
+}
+preBuild.dependsOn connectNoxToADB
+
+ */
+
+
+
 android {
     namespace 'com.example.jcompose'
     compileSdk 34
