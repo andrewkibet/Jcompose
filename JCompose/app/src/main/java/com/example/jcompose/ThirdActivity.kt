@@ -53,6 +53,7 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 
@@ -121,14 +122,15 @@ fun ThirdComponents() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 8.dp)
+                            .padding(vertical = 8.dp),
+                        verticalAlignment =Alignment.CenterVertically
                     ){
                         Icon(Icons.Filled.Star,
                             contentDescription = "Rate",
                             modifier=Modifier
                                 .padding(end = 8.dp)
-                                .size(100.dp)
-                                .padding(bottom = 16.dp)
+                                .size(40.dp)
+
 
                         )
 
