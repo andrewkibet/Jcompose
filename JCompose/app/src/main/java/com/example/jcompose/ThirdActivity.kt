@@ -53,6 +53,8 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 
 class ThirdActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +83,7 @@ fun ThirdComponents() {
 
             ) {
                 Column(modifier = Modifier
-                    .fillMaxHeight()
+                    .fillMaxSize()
                     
 
                 ) {
@@ -108,7 +110,12 @@ fun ThirdComponents() {
 
                     }
 
-                   Divider(modifier = Modifier.padding(vertical = 8.dp))
+                   Divider(modifier = Modifier
+                       .fillMaxWidth()
+                       .padding(vertical = 8.dp)
+
+
+                   )
 
                     // Drawer menu items
                     Row(
@@ -116,8 +123,19 @@ fun ThirdComponents() {
                             .fillMaxWidth()
                             .padding(vertical = 8.dp)
                     ){
-                        Icon(Icons.Filled.Star, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
-                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
+                        Icon(Icons.Filled.Star,
+                            contentDescription = "Rate",
+                            modifier=Modifier
+                                .padding(end = 8.dp)
+                                .size(100.dp)
+                                .padding(bottom = 16.dp)
+
+                        )
+
+                        Text(text = "Rate us",
+                            style = MaterialTheme.typography.body1, fontSize = 22.sp
+
+                        )
                     }
                     Row(
                         modifier = Modifier
@@ -144,7 +162,11 @@ fun ThirdComponents() {
                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
                    }
 
-                    Divider()
+                    Divider(
+                        color = Color.Black,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
                 }
             }
         },
