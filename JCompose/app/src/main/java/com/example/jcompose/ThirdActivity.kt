@@ -125,6 +125,47 @@ fun ThirdComponents() {
                             .padding(vertical = 8.dp),
                         verticalAlignment =Alignment.CenterVertically
                     ){
+                        Icon(Icons.Filled.Email,
+                            contentDescription = "Rate",
+                            modifier=Modifier
+                                .padding(end = 8.dp)
+                                .size(40.dp)
+
+
+                        )
+
+                        Text(text = "Email",
+                            style = MaterialTheme.typography.body1, fontSize = 22.sp
+
+                        )
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                        verticalAlignment =Alignment.CenterVertically
+                    ){
+                        Icon(Icons.Filled.Refresh,
+                            contentDescription = "Refresh",
+                            modifier=Modifier
+                                .padding(end = 8.dp)
+                                .size(40.dp)
+
+
+                        )
+
+                        Text(text = "Refresh",
+                            style = MaterialTheme.typography.body1, fontSize = 22.sp
+
+                        )
+                    }
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                        verticalAlignment =Alignment.CenterVertically
+                    ){
                         Icon(Icons.Filled.Star,
                             contentDescription = "Rate",
                             modifier=Modifier
@@ -134,35 +175,11 @@ fun ThirdComponents() {
 
                         )
 
-                        Text(text = "Rate us",
+                        Text(text = "Favourite",
                             style = MaterialTheme.typography.body1, fontSize = 22.sp
 
                         )
                     }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
-                    ){
-                        Icon(Icons.Filled.Refresh, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
-                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
-                    ){
-                        Icon(Icons.Filled.Email, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
-                        Text(text = "Rate us",style = MaterialTheme.typography.body1)
-                    }
-                   Row(
-                      modifier = Modifier
-                          .fillMaxWidth()
-                          .padding(vertical = 8.dp)
-                   ){
-                       Icon(Icons.Filled.Favorite, contentDescription = "Rate",modifier=Modifier.padding(end = 8.dp))
-                       Text(text = "Rate us",style = MaterialTheme.typography.body1)
-                   }
 
                     Divider(
                         color = Color.Black,
