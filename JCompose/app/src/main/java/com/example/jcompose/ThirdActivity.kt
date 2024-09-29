@@ -55,7 +55,11 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 
 class ThirdActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,12 +70,14 @@ class ThirdActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun ThirdComponents() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
+    val pagerState = rememberPagerState()
 
     ModalDrawer(
         drawerState = drawerState,
@@ -127,7 +133,7 @@ fun ThirdComponents() {
                     ){
                         Icon(Icons.Filled.Email,
                             contentDescription = "Rate",
-                            modifier=Modifier
+                            modifier= Modifier
                                 .padding(end = 8.dp)
                                 .size(40.dp)
 
@@ -147,7 +153,7 @@ fun ThirdComponents() {
                     ){
                         Icon(Icons.Filled.Refresh,
                             contentDescription = "Refresh",
-                            modifier=Modifier
+                            modifier= Modifier
                                 .padding(end = 8.dp)
                                 .size(40.dp)
 
@@ -168,7 +174,7 @@ fun ThirdComponents() {
                     ){
                         Icon(Icons.Filled.Star,
                             contentDescription = "Rate",
-                            modifier=Modifier
+                            modifier= Modifier
                                 .padding(end = 8.dp)
                                 .size(40.dp)
 
@@ -254,12 +260,39 @@ fun ThirdComponents() {
                     ) {
                         Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
 
-                        Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
+                        HorizontalPager(count = 3,
+                            state= pagerState,
+                            modifier = Modifier.fillMaxSize()
+                        ){page ->
+                            when (page){
+                                0 -> PageScreen("Page 1", Color.Red)
+                                1 -> PageScreen("Page 2", Color.Green)
+                                2 -> PageScreen("Page 3", Color.Blue)
+                            }
+
+                        }
                     }
                 }
             )
         }
     )
+}
+
+@Composable
+fun PageScreen(pageText:String,backgroundColor: Color){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(16.dp)
+    ){
+        Text(
+            text = pageText,
+            style = MaterialTheme.typography.h4,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
 }
 
 @Preview(showBackground = true)
