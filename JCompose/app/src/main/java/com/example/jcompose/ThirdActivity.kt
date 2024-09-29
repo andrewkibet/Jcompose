@@ -78,6 +78,8 @@ fun ThirdComponents() {
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
     val pagerState = rememberPagerState()
+    val tabTitles = listOf("Tab 1","Tab 2","Tab 3 ")
+    var selectedTabIndex by remember { mutableStateOf(0)}
 
     ModalDrawer(
         drawerState = drawerState,
@@ -91,7 +93,7 @@ fun ThirdComponents() {
             ) {
                 Column(modifier = Modifier
                     .fillMaxSize()
-                    
+
 
                 ) {
                     // Add profile image
@@ -260,10 +262,29 @@ fun ThirdComponents() {
                     ) {
                         Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
 
-                        HorizontalPager(count = 3,
+                        TabRow(
+                            selectedTabIndex = selectedTabIndex,
+                            backgroundColor = MaterialTheme.colors.primary,
+                            contentColor = Color.White
+                        ) {
+                            tabTitles.forEachIndexed{ index,title ->
+                                Tab(
+                                    selected = selectedTabIndex ==index,
+                                    onClick = {
+                                    scope.launch {
+                                        pagerState.scrollToPage(index)
+                                    }
+                            },
+                                    text = { Text(text = title)}
+                                )
+                            }
+                        }
+
+                        HorizontalPager(count = tabTitles.size,
                             state= pagerState,
                             modifier = Modifier.fillMaxSize()
                         ){page ->
+                            selectedTabIndex = page
                             when (page){
                                 0 -> PageScreen("Page 1", Color.Red)
                                 1 -> PageScreen("Page 2", Color.Green)
