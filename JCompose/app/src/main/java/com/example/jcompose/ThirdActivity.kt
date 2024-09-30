@@ -260,37 +260,37 @@ fun ThirdComponents() {
                             .padding(innerPadding)
                             .fillMaxSize()
                     ) {
-                        Text(text = "Working on SocialM", modifier = Modifier.padding(16.dp))
-
                         TabRow(
                             selectedTabIndex = selectedTabIndex,
                             backgroundColor = MaterialTheme.colors.primary,
                             contentColor = Color.White
                         ) {
-                            tabTitles.forEachIndexed{ index,title ->
+                            tabTitles.forEachIndexed { index, title ->
                                 Tab(
-                                    selected = selectedTabIndex ==index,
+                                    selected = selectedTabIndex == index,
                                     onClick = {
-                                    scope.launch {
-                                        pagerState.scrollToPage(index)
-                                    }
-                            },
-                                    text = { Text(text = title)}
+                                        scope.launch {
+                                            pagerState.scrollToPage(index)
+                                        }
+                                    },
+                                    text = { Text(text = title) }
                                 )
                             }
                         }
 
-                        HorizontalPager(count = tabTitles.size,
-                            state= pagerState,
+                        // HorizontalPager for swiping between tabs
+                        HorizontalPager(
+                            count = tabTitles.size,
+                            state = pagerState,
                             modifier = Modifier.fillMaxSize()
-                        ){page ->
+                        ) { page ->
                             selectedTabIndex = page
-                            when (page){
-                                0 -> PageScreen("Page 1", Color.White)
-                                1 -> PageScreen("Page 2", Color.White)
-                                2 -> PageScreen("Page 3", Color.White)
+                            when (page) {
+                                0 -> PageScreen("Chats", Color.LightGray)
+                                1 -> PageScreen("Updates", Color.Cyan)
+                                2 -> PageScreen("Communities", Color.Green)
+                                3 -> PageScreen("Calls", Color.Magenta)
                             }
-
                         }
                     }
                 }
