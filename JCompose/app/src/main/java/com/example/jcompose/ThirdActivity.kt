@@ -281,8 +281,18 @@ fun ThirdComponents() {
                                             pagerState.scrollToPage(index)
                                         }
                                     },
-                                    text = { Text(text = title) }
-                                )
+                                    modifier = Modifier
+                                        .background(
+                                            if(selectedTabIndex==index)Color.Yellow else Color.Transparent
+                                        )){
+
+                                   Text(
+                                       text = title,
+                                       color = if (selectedTabIndex == index) Color.Black else Color.White)
+                                }
+
+                                    
+                                
                             }
                         }
 
