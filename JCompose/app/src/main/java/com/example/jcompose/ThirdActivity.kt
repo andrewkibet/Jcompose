@@ -78,7 +78,7 @@ fun ThirdComponents() {
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
     val pagerState = rememberPagerState()
-    val tabTitles = listOf("Tab 1","Tab 2","Tab 3 ")
+    val tabTitles = listOf("Chats","Updates","Communities","Calls ")
     var selectedTabIndex by remember { mutableStateOf(0)}
 
     ModalDrawer(
