@@ -265,12 +265,6 @@ fun ThirdComponents() {
                             selectedTabIndex = selectedTabIndex,
                             backgroundColor = MaterialTheme.colors.primarySurface,
                             contentColor = Color.White,
-                            indicator ={tabPositions ->
-                                TabRowDefaults.Indicator(
-                                    Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
-                                    color=Color.Yellow
-                                )
-                            }
 
                         ) {
                             tabTitles.forEachIndexed { index, title ->
@@ -279,6 +273,7 @@ fun ThirdComponents() {
                                     onClick = {
                                         scope.launch {
                                             pagerState.scrollToPage(index)
+                                            selectedTabIndex = index
                                         }
                                     },
                                     modifier = Modifier
