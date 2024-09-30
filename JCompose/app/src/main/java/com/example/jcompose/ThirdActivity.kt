@@ -49,6 +49,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import androidx.compose.material.*
+import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Refresh
@@ -263,7 +264,14 @@ fun ThirdComponents() {
                         TabRow(
                             selectedTabIndex = selectedTabIndex,
                             backgroundColor = MaterialTheme.colors.primary,
-                            contentColor = Color.White
+                            contentColor = Color.White,
+                            indicator ={tabPositions ->
+                                TabRowDefaults.Indicator(
+                                    Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
+                                    color=Color.Yellow
+                                )
+                            }
+
                         ) {
                             tabTitles.forEachIndexed { index, title ->
                                 Tab(
