@@ -255,7 +255,7 @@ fun ThirdComponents() {
                     }
                 },
                 content = { innerPadding ->
-                    Box(
+                    Column(
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
