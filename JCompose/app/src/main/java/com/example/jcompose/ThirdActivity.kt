@@ -283,7 +283,7 @@ fun ThirdComponents() {
                                     },
                                     modifier = Modifier
                                         .background(
-                                            if(selectedTabIndex==index)Color.Yellow else Color.Transparent
+                                            if(selectedTabIndex==index)Color.Green else Color.Transparent
                                         )){
 
                                    Text(
