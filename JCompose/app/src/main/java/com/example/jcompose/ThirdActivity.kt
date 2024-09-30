@@ -286,8 +286,8 @@ fun ThirdComponents() {
                                        color = if (selectedTabIndex == index) Color.Black else Color.White)
                                 }
 
-                                    
-                                
+
+
                             }
                         }
 
