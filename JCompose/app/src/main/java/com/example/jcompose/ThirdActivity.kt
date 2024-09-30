@@ -286,9 +286,9 @@ fun ThirdComponents() {
                         ){page ->
                             selectedTabIndex = page
                             when (page){
-                                0 -> PageScreen("Page 1", Color.Red)
-                                1 -> PageScreen("Page 2", Color.Green)
-                                2 -> PageScreen("Page 3", Color.Blue)
+                                0 -> PageScreen("Page 1", Color.White)
+                                1 -> PageScreen("Page 2", Color.White)
+                                2 -> PageScreen("Page 3", Color.White)
                             }
 
                         }
