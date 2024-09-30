@@ -279,19 +279,19 @@ fun ThirdComponents() {
                                 )
                             }
                         }
+                    }
 
-                        HorizontalPager(count = tabTitles.size,
-                            state= pagerState,
-                            modifier = Modifier.fillMaxSize()
-                        ){page ->
-                            selectedTabIndex = page
-                            when (page){
-                                0 -> PageScreen("Page 1", Color.White)
-                                1 -> PageScreen("Page 2", Color.White)
-                                2 -> PageScreen("Page 3", Color.White)
-                            }
-
+                    HorizontalPager(count = tabTitles.size,
+                        state= pagerState,
+                        modifier = Modifier.fillMaxSize()
+                    ){page ->
+                        selectedTabIndex = page
+                        when (page){
+                            0 -> PageScreen("Page 1", Color.White)
+                            1 -> PageScreen("Page 2", Color.White)
+                            2 -> PageScreen("Page 3", Color.White)
                         }
+
                     }
                 }
             )
