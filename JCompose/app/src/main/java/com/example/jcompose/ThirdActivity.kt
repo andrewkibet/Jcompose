@@ -263,7 +263,7 @@ fun ThirdComponents() {
                     ) {
                         TabRow(
                             selectedTabIndex = selectedTabIndex,
-                            backgroundColor = MaterialTheme.colors.primary,
+                            backgroundColor = MaterialTheme.colors.primarySurface,
                             contentColor = Color.White,
                             indicator ={tabPositions ->
                                 TabRowDefaults.Indicator(
