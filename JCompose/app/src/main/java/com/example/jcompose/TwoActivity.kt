@@ -161,11 +161,7 @@ fun MyAppComponents() {
                     .padding(innerPadding)
                     .fillMaxSize()) {
                     Text(
-                        text ="""
-                            Working on SocialM
-                                I have wrapped my drawer content in Scaffold
-                                """.trimIndent(),
-                        modifier = Modifier.padding(16.dp)
+                      
                     )
                 }
             }
