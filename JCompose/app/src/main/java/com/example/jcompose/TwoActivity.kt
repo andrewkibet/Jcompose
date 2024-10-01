@@ -98,20 +98,50 @@ fun MyAppComponents() {
                 )
             },
             bottomBar = {
-                BottomAppBar(
-                    backgroundColor = MaterialTheme.colorScheme.secondary,
-                    content = {
-                        IconButton(onClick = {
-                            val intent = Intent(context, ThirdActivity::class.java)
-                            context.startActivity(intent)
-                        }) {
-                            Icon(Icons.Filled.Call, contentDescription = "Call")
-                        }
-                        IconButton(onClick = { /*TODO*/ }) {
-                            Icon(Icons.Filled.Email, contentDescription = "Email")
-                        }
+//                BottomAppBar(
+//                    backgroundColor = MaterialTheme.colorScheme.secondary,
+//                    content = {
+//                        IconButton(onClick = {
+//                            val intent = Intent(context, ThirdActivity::class.java)
+//                            context.startActivity(intent)
+//                        }) {
+//                            Icon(Icons.Filled.Call, contentDescription = "Call")
+//                        }
+//                        IconButton(onClick = { /*TODO*/ }) {
+//                            Icon(Icons.Filled.Email, contentDescription = "Email")
+//                        }
+//                    }
+//                )
+
+
+                BottomNavigation(
+                   // selectedTabIndex = selectedTabIndex.value,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    HomeTabs.entries.forEachIndexed { index, currentTab ->
+                        Tab(
+                            selected = selectedTabIndex.value == index,
+                            selectedContentColor = MaterialTheme.colorScheme.primary,
+                            unselectedContentColor = MaterialTheme.colorScheme.outline,
+                            onClick = {
+                                scope.launch {
+                                    pagerState.animateScrollToPage(currentTab.ordinal)
+                                }
+                            },
+                            text = { Text(text = currentTab.text) },
+                            icon = {
+                                Icon(
+                                    imageVector = if (selectedTabIndex.value == index)
+                                        currentTab.selectedIcon else currentTab.unselectedIcon,
+                                    contentDescription = "Tab Icon"
+                                )
+                            }
+                        )
                     }
-                )
+                }
+
+
+
             },
             floatingActionButton = {
                 FloatingActionButton(onClick = {
@@ -133,31 +163,6 @@ fun MyAppComponents() {
                     .padding(innerPadding)
                     .fillMaxSize()) {
 
-                    TabRow(
-                        selectedTabIndex = selectedTabIndex.value,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        HomeTabs.entries.forEachIndexed { index, currentTab ->
-                            Tab(
-                                selected = selectedTabIndex.value == index,
-                                selectedContentColor = MaterialTheme.colorScheme.primary,
-                                unselectedContentColor = MaterialTheme.colorScheme.outline,
-                                onClick = {
-                                    scope.launch {
-                                        pagerState.animateScrollToPage(currentTab.ordinal)
-                                    }
-                                },
-                                text = { Text(text = currentTab.text) },
-                                icon = {
-                                    Icon(
-                                        imageVector = if (selectedTabIndex.value == index)
-                                            currentTab.selectedIcon else currentTab.unselectedIcon,
-                                        contentDescription = "Tab Icon"
-                                    )
-                                }
-                            )
-                        }
-                    }
 
                     HorizontalPager(
                         state = pagerState,
