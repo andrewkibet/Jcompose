@@ -115,30 +115,31 @@ fun MyAppComponents() {
 
 
                 BottomNavigation(
-                   // selectedTabIndex = selectedTabIndex.value,
+                    backgroundColor = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     HomeTabs.entries.forEachIndexed { index, currentTab ->
-                        Tab(
+                        BottomNavigationItem(
                             selected = selectedTabIndex.value == index,
-                            selectedContentColor = MaterialTheme.colorScheme.primary,
-                            unselectedContentColor = MaterialTheme.colorScheme.outline,
                             onClick = {
                                 scope.launch {
-                                    pagerState.animateScrollToPage(currentTab.ordinal)
+                                    pagerState.animateScrollToPage(index)
                                 }
                             },
-                            text = { Text(text = currentTab.text) },
                             icon = {
                                 Icon(
                                     imageVector = if (selectedTabIndex.value == index)
                                         currentTab.selectedIcon else currentTab.unselectedIcon,
-                                    contentDescription = "Tab Icon"
+                                    contentDescription = "Bottom Tab Icon"
                                 )
-                            }
+                            },
+                            label = { Text(text = currentTab.text) },
+                            selectedContentColor = MaterialTheme.colorScheme.primary,
+                            unselectedContentColor = MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }
+
 
 
 
