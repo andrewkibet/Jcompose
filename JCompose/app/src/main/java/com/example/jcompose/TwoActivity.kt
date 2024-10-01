@@ -134,7 +134,7 @@ fun MyAppComponents() {
                                 )
                             },
                             label = { Text(text = currentTab.text) },
-                            selectedContentColor = MaterialTheme.colorScheme.primary,
+                            selectedContentColor = MaterialTheme.colorScheme.inversePrimary,
                             unselectedContentColor = MaterialTheme.colorScheme.onSurface
                         )
                     }
