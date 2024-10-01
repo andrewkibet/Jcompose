@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.graphics.Color
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomAppBar
@@ -157,12 +158,10 @@ fun MyAppComponents() {
                 Text(text = "Drawer Item 4", modifier = Modifier.padding(16.dp))
             },
             content = { innerPadding ->
-                Box(modifier = Modifier
+                Column(modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()) {
-                    Text(
-                      
-                    )
+
                 }
             }
         )
