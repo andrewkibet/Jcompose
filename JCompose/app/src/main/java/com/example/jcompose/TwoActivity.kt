@@ -43,6 +43,7 @@ import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.material.*
 import androidx.compose.ui.platform.LocalContext
+import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
 class TwoActivity : ComponentActivity() {
@@ -62,6 +63,9 @@ fun MyAppComponents() {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState() // Control the scaffold's drawer state
+    val pagerState = rememberPagerState(pageCount = { HomeTabs.entries.size })
+    val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
+
 
     MaterialTheme {
         Scaffold(
@@ -160,6 +164,29 @@ fun MyAppComponents() {
     }
 
     //0762738873- Mama Joy
+}
+
+
+enum class HomeTabs(
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector,
+    val text: String
+) {
+    Shop(
+        unselectedIcon = Icons.Outlined.ShoppingCart,
+        selectedIcon = Icons.Filled.ShoppingCart,
+        text = "Shop"
+    ),
+    Favourite(
+        unselectedIcon = Icons.Outlined.FavoriteBorder,
+        selectedIcon = Icons.Filled.Favorite,
+        text = "Favourite"
+    ),
+    Profile(
+        unselectedIcon = Icons.Outlined.Person,
+        selectedIcon = Icons.Filled.Person,
+        text = "Profile"
+    )
 }
 
 @Preview(showBackground = true)
