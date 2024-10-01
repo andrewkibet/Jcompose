@@ -71,6 +71,11 @@ fun MyAppComponents() {
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState() // Control the scaffold's drawer state
 
+    val pagerState = rememberPagerState(pageCount = { HomeTabs.entries.size })
+    val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
+
+
+
     MaterialTheme {
         Scaffold(
             scaffoldState = scaffoldState,  // Pass scaffold state to control drawer
@@ -155,13 +160,57 @@ fun MyAppComponents() {
                 Column(modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()) {
-                    Text(
-                        text ="""
-                            Working on SocialM
-                                I have wrapped my drawer content in Scaffold
-                                """.trimIndent(),
-                        modifier = Modifier.padding(16.dp)
-                    )
+//                    Text(
+//                        text ="""
+//                            Working on SocialM
+//                                I have wrapped my drawer content in Scaffold
+//                                """.trimIndent(),
+//                        modifier = Modifier.padding(16.dp)
+//                    )
+
+
+                    TabRow(
+                        selectedTabIndex = selectedTabIndex.value,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        HomeTabs.entries.forEachIndexed { index, currentTab ->
+                            Tab(
+                                selected = selectedTabIndex.value == index,
+                                selectedContentColor = MaterialTheme.colorScheme.primary,
+                                unselectedContentColor = MaterialTheme.colorScheme.outline,
+                                onClick = {
+                                    scope.launch {
+                                        pagerState.animateScrollToPage(currentTab.ordinal)
+                                    }
+                                },
+                                text = { Text(text = currentTab.text) },
+                                icon = {
+                                    Icon(
+                                        imageVector = if (selectedTabIndex.value == index)
+                                            currentTab.selectedIcon else currentTab.unselectedIcon,
+                                        contentDescription = "Tab Icon"
+                                    )
+                                }
+                            )
+                        }
+                    }
+
+                    HorizontalPager(
+                        state = pagerState,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(text = HomeTabs.entries[selectedTabIndex.value].text)
+                        }
+                    }
+
+
+
                 }
             }
         )
