@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.DropdownMenu
@@ -162,6 +163,31 @@ fun MyAppComponents() {
                     .padding(innerPadding)
                     .fillMaxSize()) {
 
+                    TabRow(
+                        selectedTabIndex = selectedTabIndex.value,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        HomeTabs.entries.forEachIndexed { index, currentTab ->
+                            Tab(
+                                selected = selectedTabIndex.value == index,
+                                selectedContentColor = MaterialTheme.colorScheme.primary,
+                                unselectedContentColor = MaterialTheme.colorScheme.outline,
+                                onClick = {
+                                    scope.launch {
+                                        pagerState.animateScrollToPage(currentTab.ordinal)
+                                    }
+                                },
+                                text = { Text(text = currentTab.text) },
+                                icon = {
+                                    Icon(
+                                        imageVector = if (selectedTabIndex.value == index)
+                                            currentTab.selectedIcon else currentTab.unselectedIcon,
+                                        contentDescription = "Tab Icon"
+                                    )
+                                }
+                            )
+                        }
+                    }
                 }
             }
         )
