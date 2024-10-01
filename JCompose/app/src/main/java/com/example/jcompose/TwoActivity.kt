@@ -42,7 +42,9 @@ import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.material.*
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
@@ -55,6 +57,7 @@ class TwoActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MyAppComponents() {
 
