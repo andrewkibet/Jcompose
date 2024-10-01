@@ -115,7 +115,7 @@ fun MyAppComponents() {
 
 
                 BottomNavigation(
-                    backgroundColor = MaterialTheme.colorScheme.secondary,
+                    backgroundColor = MaterialTheme.colorScheme.inverseOnSurface,
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     HomeTabs.entries.forEachIndexed { index, currentTab ->
