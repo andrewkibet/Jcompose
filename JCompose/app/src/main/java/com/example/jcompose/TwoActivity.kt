@@ -42,6 +42,10 @@ import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.launch
 
@@ -161,6 +165,32 @@ fun MyAppComponents() {
 
     //0762738873- Mama Joy
 }
+
+
+
+enum class HomeTabs(
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector,
+    val text: String
+) {
+    Shop(
+        unselectedIcon = Icons.Outlined.ShoppingCart,
+        selectedIcon = Icons.Filled.ShoppingCart,
+        text = "Shop"
+    ),
+    Favourite(
+        unselectedIcon = Icons.Outlined.FavoriteBorder,
+        selectedIcon = Icons.Filled.Favorite,
+        text = "Favourite"
+    ),
+    Profile(
+        unselectedIcon = Icons.Outlined.Person,
+        selectedIcon = Icons.Filled.Person,
+        text = "Profile"
+    )
+}
+
+
 
 @Preview(showBackground = true)
 @Composable
