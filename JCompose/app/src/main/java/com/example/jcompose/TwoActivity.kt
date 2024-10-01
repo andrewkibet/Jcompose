@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.graphics.Color
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomAppBar
@@ -43,13 +42,6 @@ import androidx.compose.ui.unit.dp
 import com.example.jcompose.ui.theme.JComposeTheme
 import androidx.compose.runtime.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.launch
 
@@ -70,11 +62,6 @@ fun MyAppComponents() {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState() // Control the scaffold's drawer state
-
-    val pagerState = rememberPagerState(pageCount = { HomeTabs.entries.size })
-    val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
-
-
 
     MaterialTheme {
         Scaffold(
@@ -157,60 +144,16 @@ fun MyAppComponents() {
                 Text(text = "Drawer Item 4", modifier = Modifier.padding(16.dp))
             },
             content = { innerPadding ->
-                Column(modifier = Modifier
+                Box(modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()) {
-//                    Text(
-//                        text ="""
-//                            Working on SocialM
-//                                I have wrapped my drawer content in Scaffold
-//                                """.trimIndent(),
-//                        modifier = Modifier.padding(16.dp)
-//                    )
-
-
-                    TabRow(
-                        selectedTabIndex = selectedTabIndex.value,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        HomeTabs.entries.forEachIndexed { index, currentTab ->
-                            Tab(
-                                selected = selectedTabIndex.value == index,
-                                selectedContentColor = MaterialTheme.colorScheme.primary,
-                                unselectedContentColor = MaterialTheme.colorScheme.outline,
-                                onClick = {
-                                    scope.launch {
-                                        pagerState.animateScrollToPage(currentTab.ordinal)
-                                    }
-                                },
-                                text = { Text(text = currentTab.text) },
-                                icon = {
-                                    Icon(
-                                        imageVector = if (selectedTabIndex.value == index)
-                                            currentTab.selectedIcon else currentTab.unselectedIcon,
-                                        contentDescription = "Tab Icon"
-                                    )
-                                }
-                            )
-                        }
-                    }
-
-                    HorizontalPager(
-                        state = pagerState,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(1f)
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(text = HomeTabs.entries[selectedTabIndex.value].text)
-                        }
-                    }
-
-
-
+                    Text(
+                        text ="""
+                            Working on SocialM
+                                I have wrapped my drawer content in Scaffold
+                                """.trimIndent(),
+                        modifier = Modifier.padding(16.dp)
+                    )
                 }
             }
         )
@@ -218,32 +161,6 @@ fun MyAppComponents() {
 
     //0762738873- Mama Joy
 }
-
-
-
-enum class HomeTabs(
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
-    val text: String
-) {
-    Shop(
-        unselectedIcon = Icons.Outlined.ShoppingCart,
-        selectedIcon = Icons.Filled.ShoppingCart,
-        text = "Shop"
-    ),
-    Favourite(
-        unselectedIcon = Icons.Outlined.FavoriteBorder,
-        selectedIcon = Icons.Filled.Favorite,
-        text = "Favourite"
-    ),
-    Profile(
-        unselectedIcon = Icons.Outlined.Person,
-        selectedIcon = Icons.Filled.Person,
-        text = "Profile"
-    )
-}
-
-
 
 @Preview(showBackground = true)
 @Composable
