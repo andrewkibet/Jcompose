@@ -39,3 +39,12 @@ Other Topics:
 
 ## Setting Up MVVM in Jetpack Compose
 Step 1: Add Dependencies
+`dependencies {
+implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0"
+implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0"
+implementation "androidx.room:room-runtime:2.5.0"
+kapt "androidx.room:room-compiler:2.5.0"
+// Other dependencies...
+}`
+
