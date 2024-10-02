@@ -52,3 +52,18 @@ Step 2: Define the Model
 Create a data class and a repository.
 For example, let's say you have a simple app that manages a list of tasks.
 
+```// Task.kt (Model)
+data class Task(val id: Int, val name: String)
+
+// TaskRepository.kt
+class TaskRepository {
+private val tasks = mutableListOf<Task>()```
+
+    fun getTasks(): List<Task> {
+        return tasks
+    }
+
+    fun addTask(task: Task) {
+        tasks.add(task)
+    }
+}
