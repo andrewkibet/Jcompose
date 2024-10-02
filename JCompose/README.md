@@ -48,3 +48,7 @@ kapt "androidx.room:room-compiler:2.5.0"
 // Other dependencies...
 }`
 
+Step 2: Define the Model
+Create a data class and a repository.
+For example, let's say you have a simple app that manages a list of tasks.
+
