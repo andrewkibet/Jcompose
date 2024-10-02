@@ -18,6 +18,20 @@ _color = colorResource(id = R.color.black)_
 Other Topics:
 1. Understanding Architecture Patterns: MVVM
 2. Networking -RETROFIT
-3.  Local Databases RESTful APIs
+3. Local Databases RESTful APIs
 4. API Communication
 5. State Management
+
+          **MVVM**
+**Understanding the Components**
+1. Model:Represents the data and business logic of the application.
+   It interacts with the database, network, and other data sources.
+   Contains data classes and repository classes to manage data.
+2. View:
+   Represents the UI of the application.
+   In Jetpack Compose, this is defined using composable functions.
+   Observes data from the ViewModel and displays it to the user.
+
+3. ViewModel:Acts as a bridge between the Model and the View.
+   Holds UI-related data and handles business logic.
+   Survives configuration changes (like screen rotations) without losing data.
