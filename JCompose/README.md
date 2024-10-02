@@ -20,10 +20,10 @@ Other Topics:
 2. Networking -RETROFIT
 3. Local Databases RESTful APIs
 4. API Communication
-5. State Management
+   5. State Management
 
-          **MVVM**
-**Understanding the Components**
+        **MVVM**
+   **Understanding the Components**
 1. Model:Represents the data and business logic of the application.
    It interacts with the database, network, and other data sources.
    Contains data classes and repository classes to manage data.
