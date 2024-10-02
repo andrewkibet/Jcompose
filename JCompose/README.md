@@ -36,3 +36,5 @@ Other Topics:
 3. **ViewModel**:Acts as a bridge between the Model and the View.
    Holds UI-related data and handles business logic.
    Survives configuration changes (like screen rotations) without losing data.
+
+## Setting Up MVVM in Jetpack Compose
