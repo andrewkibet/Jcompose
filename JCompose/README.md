@@ -38,3 +38,4 @@ Other Topics:
    Survives configuration changes (like screen rotations) without losing data.
 
 ## Setting Up MVVM in Jetpack Compose
+Step 1: Add Dependencies
