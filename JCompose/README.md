@@ -14,3 +14,10 @@ Allow you to augment or decorate Composables. It lets you do these  sorts of thi
 If you want to access colors from resources in Jetpack Compose without declaring variables for each color, <br>
 you can do so by using the colorResource function directly in your Composable functions. <br>
 _color = colorResource(id = R.color.black)_
+
+Other Topics:
+1. Understanding Architecture Patterns: MVVM
+2. Networking -RETROFIT
+3.  Local Databases RESTful APIs
+4. API Communication
+5. State Management
