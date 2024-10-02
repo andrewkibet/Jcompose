@@ -20,6 +20,11 @@
         android:theme="@style/Theme.JCompose"
         tools:targetApi="31">
         <activity
+            android:name=".MVVMActivity"
+            android:exported="false"
+            android:label="@string/title_activity_mvvmactivity"
+            android:theme="@style/Theme.JCompose" />
+        <activity
             android:name=".ThirdActivity"
             android:exported="false"
             android:label="@string/title_activity_third"
