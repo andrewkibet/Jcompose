@@ -38,7 +38,7 @@ Other Topics:
    Survives configuration changes (like screen rotations) without losing data.
 
 ## Setting Up MVVM in Jetpack Compose
-Step 1: Add Dependencies
+#### Step 1: Add Dependencies
 `dependencies {
 implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0"
 implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
@@ -48,7 +48,8 @@ kapt "androidx.room:room-compiler:2.5.0"
 // Other dependencies...
 }`
 
-Step 2: Define the Model
+#### Step 2: Define the Model
+
 Create a data class and a repository.
 For example, let's say you have a simple app that manages a list of tasks.
 
