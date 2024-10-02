@@ -22,7 +22,7 @@ Other Topics:
 4. API Communication
 5. State Management
 
- **MVVM**   
+#  **MVVM**   
 
    **Understanding the Components**
 1. Model:Represents the data and business logic of the application.
