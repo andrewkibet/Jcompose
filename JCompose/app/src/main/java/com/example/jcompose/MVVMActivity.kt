@@ -26,7 +26,7 @@ class MVVMActivity : ComponentActivity() {
         setContent {
             JComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TaskApp()
+
                 }
             }
         }
@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier
     )
 }
-
+/*
 @Composable
 fun TaskApp(viewModel: TaskViewModel) {
     var newTaskName by remember { mutableStateOf("") }
@@ -68,6 +68,8 @@ fun TaskApp(viewModel: TaskViewModel) {
         }
     }
 }
+
+ */
 
 
 @Preview(showBackground = true)
