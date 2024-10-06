@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class TaskViewModel (private val repository: TaskRepository):ViewModel() {
     private val _tasks= mutableSetOf<List <Task>>(emptyList())
-    val tasks: Lifecycle.State<List<Task>> get()=_tasks
+   // val tasks: Lifecycle.State<List<Task>> get()=_tasks
 
     init {
         loadTask()
