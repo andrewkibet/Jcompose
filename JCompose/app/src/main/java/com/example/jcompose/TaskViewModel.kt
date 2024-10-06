@@ -16,8 +16,8 @@ class TaskViewModel (private val repository: TaskRepository):ViewModel() {
       _tasks.value = repository.getTasks()
     }
     fun addTask(name:String){
-        val newTask = Task(id = _tasks.value.size +1, name= name)
-        repository.addTask(newTask)
+      //  val newTask = Task(id = _tasks.value.size +1, name= name)
+        //repository.addTask(newTask)
         loadTask()
     }
 }
