@@ -13,7 +13,7 @@ class TaskViewModel (private val repository: TaskRepository):ViewModel() {
 
     private fun loadTask()
     {
-      _tasks.value = repository.getTasks()
+      //_tasks.value = repository.getTasks()
     }
     fun addTask(name:String){
       //  val newTask = Task(id = _tasks.value.size +1, name= name)
