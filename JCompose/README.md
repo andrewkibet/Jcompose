@@ -15,6 +15,12 @@ If you want to access colors from resources in Jetpack Compose without declaring
 you can do so by using the colorResource function directly in your Composable functions. <br>
 _color = colorResource(id = R.color.black)_
 
+Adding a list of names to the shop tab
+
+
+
+
+
 Other Topics:
 1. Understanding Architecture Patterns: MVVM
 2. Networking -RETROFIT
