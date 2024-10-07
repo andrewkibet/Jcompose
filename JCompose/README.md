@@ -19,6 +19,10 @@ _color = colorResource(id = R.color.black)_
 To add a list of items (names) to the "Shop" tab, we can modify the HorizontalPager content for the "Shop" tab to 
 display a list of items using a LazyColumn.
 
+Steps to Add Items to the "Shop" Tab:
+Create a list of items for the shop.
+Display the list in the "Shop" tab using LazyColumn in the HorizontalPager.
+
 
 
 
