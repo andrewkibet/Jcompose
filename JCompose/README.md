@@ -20,7 +20,7 @@ To add a list of items (names) to the "Shop" tab, we can modify the HorizontalPa
 display a list of items using a LazyColumn.
 
 Steps to Add Items to the "Shop" Tab:
-Create a list of items for the shop.
+1. Create a list of items for the shop.
 Display the list in the "Shop" tab using LazyColumn in the HorizontalPager.
 
 
