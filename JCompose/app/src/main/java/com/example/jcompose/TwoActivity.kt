@@ -186,6 +186,21 @@ fun MyAppComponents() {
 }
 
 
+@Composable
+fun ShopTab() {
+    val shopItems = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(shopItems) { item ->
+            Text(text = item, style = MaterialTheme.typography.bodyLarge)
+        }
+    }
+}
+
 enum class HomeTabs(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
