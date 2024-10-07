@@ -24,7 +24,9 @@ Create a list of items for the shop.
 Display the list in the "Shop" tab using LazyColumn in the HorizontalPager.
 
 
-
+Explanation:
+ShopTab Composable: This function creates a list of 
+items using LazyColumn and displays the names.
 
 
 Other Topics:
