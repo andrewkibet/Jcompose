@@ -24,7 +24,7 @@ Steps to Add Items to the "Shop" Tab:
 2. Display the list in the "Shop" tab using LazyColumn in the HorizontalPager.
 
 
-Explanation:
+###### Explanation:
 ShopTab Composable: This function creates a list of 
 items using LazyColumn and displays the names.
 
