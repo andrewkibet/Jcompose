@@ -15,7 +15,9 @@ If you want to access colors from resources in Jetpack Compose without declaring
 you can do so by using the colorResource function directly in your Composable functions. <br>
 _color = colorResource(id = R.color.black)_
 
-Adding a list of names to the shop tab
+Adding a list of names to the shop tab:
+To add a list of items (names) to the "Shop" tab, we can modify the HorizontalPager content for the "Shop" tab to 
+display a list of items using a LazyColumn.
 
 
 
