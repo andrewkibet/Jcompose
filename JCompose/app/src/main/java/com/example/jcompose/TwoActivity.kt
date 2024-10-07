@@ -173,10 +173,13 @@ fun MyAppComponents() {
                             .fillMaxWidth()
                             .weight(1f)
                     ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
+                            page ->
+                        when (page) {
+                            0 -> ShopTab() // Display the Shop tab
+                            else -> Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
                             Text(text = HomeTabs.entries[selectedTabIndex.value].text)
                         }
                     }
