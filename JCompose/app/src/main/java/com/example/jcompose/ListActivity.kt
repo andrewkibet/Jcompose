@@ -18,13 +18,8 @@ class ListActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
         setContent {
-            JComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting2(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            
+
             }
         }
     }
@@ -32,10 +27,7 @@ class ListActivity : ComponentActivity() {
 
 @Composable
 fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+
 }
 
 @Preview(showBackground = true)
