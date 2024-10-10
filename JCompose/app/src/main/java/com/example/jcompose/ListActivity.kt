@@ -18,12 +18,12 @@ class ListActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
         setContent {
-            
+
 
             }
         }
     }
-}
+
 
 @Composable
 fun Greeting2(name: String, modifier: Modifier = Modifier) {
