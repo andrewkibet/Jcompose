@@ -43,6 +43,8 @@ fun NameListScreen() {
 @Composable
 fun Greeting2(name: String, modifier: Modifier = Modifier) {
     Text(text = "Hello, $name", modifier = modifier.padding(16.dp))
+    Text(text = "Hello, $name", modifier = modifier.padding(16.dp))
+
 }
 
 @Preview(showBackground = true)
