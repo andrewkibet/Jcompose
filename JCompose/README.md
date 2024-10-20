@@ -86,5 +86,5 @@ private val tasks = mutableListOf<Task>()```
 
 # REST APIS
 RESTful APIs **(Representational State Transfer)** are web services that adhere to the constraints and principles of REST, 
-an architectural style for designing networked applications. They use HTTP requests to perform standard CRUD (Create, Read, Update, Delete) 
+an architectural style for designing networked applications. They use HTTP requests to perform standard CRUD **(Create, Read, Update, Delete)** 
 operations on resources, typically represented in formats like JSON or XML.
