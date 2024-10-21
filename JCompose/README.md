@@ -88,3 +88,19 @@ private val tasks = mutableListOf<Task>()```
 RESTful APIs **(Representational State Transfer)** are web services that adhere to the constraints and principles of REST, 
 an architectural style for designing networked applications. They use HTTP requests to perform standard CRUD **(Create, Read, Update, Delete)** 
 operations on resources, typically represented in formats like JSON or XML.
+
+Key Concepts in RESTful APIs:
+Resources:
+
+Everything in a RESTful API is considered a resource (e.g., a user, a product, a file).
+Resources are identified by URIs (Uniform Resource Identifiers). For example:
+sql
+Copy code
+GET /users/123 - Fetch user with ID 123
+HTTP Methods: REST APIs rely on standard HTTP methods to perform actions on resources:
+
+GET: Retrieve data from the server (Read).
+POST: Send data to the server to create a new resource (Create).
+PUT: Update an existing resource (Update).
+DELETE: Remove a resource (Delete).
+PATCH: Partially update a resource.
