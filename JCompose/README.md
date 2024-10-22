@@ -116,7 +116,7 @@ JSON Parsing: APIs typically return data in JSON format. Libraries like Gson or 
 
 **Concurrency:** Network requests should never be performed on the main thread, as it can lead to a blocked UI and ANRs (Application Not Responding errors). You can use tools like:
 
-Coroutines (recommended for Kotlin)
+**Coroutines (recommended for Kotlin)**
 RxJava for reactive programming
 AsyncTask (deprecated but still used in older apps)
 Lifecycle Awareness: Since API calls might return after the activity is destroyed, Android provides lifecycle-aware components such as LiveData and ViewModel to handle responses and UI updates safely.
