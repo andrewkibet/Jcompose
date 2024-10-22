@@ -139,8 +139,10 @@ Handle authentication, error handling, and JSON parsing effectively in your API 
 Step to use Retrofit:
 1. Add Retrofit Dependency
 
-   `implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+  ` implementation 'com.squareup.retrofit2:retrofit:2.9.0' `
+
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'`
+
 2. Define API Interface
 3. Initialize Retrofit in a Singleton
 4. use Coroutines to make API Calls
