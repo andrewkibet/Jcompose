@@ -148,3 +148,17 @@ as LiveData and ViewModel to handle responses and UI updates safely.
 Use **_ViewModel_** and **_LiveData_** to handle API responses in a lifecycle-aware manner.
 Handle authentication, error handling, and JSON parsing effectively in your API calls.
 
+When do we Apply Retrofit?
+
+Let’s say you are developing an e-commerce Android app where users can browse a list of products, view details about a product, and make a purchase. To achieve this, you need a way to fetch data (e.g., product details, prices, user accounts) from a remote server and display it in your app. This is where Retrofit and RESTful APIs come into play.
+
+How Retrofit fits in:
+Fetching Product List: When the user opens the app, the product data (name, price, images) will be retrieved from a server. Retrofit will be used to send an HTTP request to a RESTful API endpoint (e.g., https://api.example.com/products). The server will respond with JSON data, and Retrofit will parse it into Kotlin objects.
+
+Fetching Product Details: When a user clicks on a product to view more details, such as specifications, reviews, and available stock, Retrofit will make another request to the API, like https://api.example.com/products/{id}. This returns detailed data for the selected product.
+
+User Authentication: If your app has user accounts, users will need to sign in or register. Retrofit can be used to send login credentials to the API, and in return, you’ll get a token that authenticates future requests (for example, placing an order).
+
+Placing an Order: Once users add items to their cart and proceed to checkout, the order details (such as selected products and shipping information) will be sent to the server using Retrofit. This data could be sent via a POST request to an endpoint like https://api.example.com/orders.
+
+In each of these cases, Retrofit manages the API communication, converts the API’s response (usually in JSON format) into usable Kotlin objects, and handles error responses.
