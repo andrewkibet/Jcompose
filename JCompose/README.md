@@ -109,12 +109,12 @@ PATCH: Partially update a resource.
 # Key Concepts in RESTful API Integration for Android
 HTTP Client: Android apps use HTTP clients to make network requests. Some common options are:
 
-HttpURLConnection: A built-in class to send and receive HTTP requests. It's not recommended for modern Android apps because it's low-level and requires more manual handling.
+**HttpURLConnection:** A built-in class to send and receive HTTP requests. It's not recommended for modern Android apps because it's low-level and requires more manual handling.
 Retrofit: A modern library that simplifies the process of making HTTP requests and handling JSON responses.
 OkHttp: Another widely used HTTP client that works well with Retrofit.
 JSON Parsing: APIs typically return data in JSON format. Libraries like Gson or Moshi are used to convert JSON into Java/Kotlin objects.
 
-Concurrency: Network requests should never be performed on the main thread, as it can lead to a blocked UI and ANRs (Application Not Responding errors). You can use tools like:
+**Concurrency:** Network requests should never be performed on the main thread, as it can lead to a blocked UI and ANRs (Application Not Responding errors). You can use tools like:
 
 Coroutines (recommended for Kotlin)
 RxJava for reactive programming
