@@ -128,6 +128,11 @@ as LiveData and ViewModel to handle responses and UI updates safely.
 
 **Tools for RESTful API Integration in Android**
 1. Retrofit (Highly recommended)
-   Retrofit is the most popular library for making HTTP requests in Android. It simplifies the process by converting HTTP API calls
-2. into Java/Kotlin interfaces.
+   Retrofit is the most popular library for making HTTP requests in Android. It simplifies the process by converting HTTP API calls into Java/Kotlin interfaces.
+
+# Summary
+Retrofit is the most efficient way to handle API calls in Android.
+Coroutines make asynchronous operations easier to manage in Kotlin.
+Use ViewModel and LiveData to handle API responses in a lifecycle-aware manner.
+Handle authentication, error handling, and JSON parsing effectively in your API calls.
 
