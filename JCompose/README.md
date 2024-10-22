@@ -136,3 +136,10 @@ as LiveData and ViewModel to handle responses and UI updates safely.
 Use **_ViewModel_** and **_LiveData_** to handle API responses in a lifecycle-aware manner.
 Handle authentication, error handling, and JSON parsing effectively in your API calls.
 
+Step to use Retrofit:
+1. Add Retrofit Dependency
+      
+2. Define API Interface
+3. Initialize Retrofit in a Singleton
+4. use Coroutines to make API Calls
+5. Observe data in your Activity or Fragment.
