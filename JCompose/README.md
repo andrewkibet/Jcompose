@@ -126,11 +126,11 @@ AsyncTask (deprecated but still used in older apps)
 Lifecycle Awareness: Since API calls might return after the activity is destroyed, Android provides lifecycle-aware components such
 as LiveData and ViewModel to handle responses and UI updates safely.
 
-**Tools for RESTful API Integration in Android**
-1. Retrofit (Highly recommended)
+## **Tools for RESTful API Integration in Android**
+1. **Retrofit** _(Highly recommended)_
    Retrofit is the most popular library for making HTTP requests in Android. It simplifies the process by converting HTTP API calls into Java/Kotlin interfaces.
 
-Step to use Retrofit:
+### Step to use Retrofit:
 1. Add Retrofit Dependency
 
 ` implementation 'com.squareup.retrofit2:retrofit:2.9.0' `
