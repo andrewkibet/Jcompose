@@ -1,44 +1,48 @@
 package com.example.jcompose
-
+/***
 import android.content.Intent
 import android.os.Bundle
-import androidx.compose.material.*
 import androidx.activity.ComponentActivity
-import androidx.compose.ui.graphics.Color
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jcompose.ui.theme.JComposeTheme
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
+import androidx.lifecycle.ViewModel
+//import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class TwoActivity : ComponentActivity() {
+// ViewModel definition
+class ProductViewModel : ViewModel() {
+    private val _products = MutableStateFlow<List<String>>(emptyList())
+    val products: StateFlow<List<String>> = _products
+
+    init {
+        loadProducts()
+    }
+
+    private fun loadProducts() {
+        _products.value = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+    }
+}
+
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -47,155 +51,103 @@ class TwoActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyAppComponents() {
-    var expanded by remember { mutableStateOf(false) }
-    val context = LocalContext.current
+    //val productViewModel: ProductViewModel = viewModel() // Initialize ViewModel
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
-    val pagerState = rememberPagerState(initialPage = 0) // Updated method
-    val selectedTabIndex = remember { derivedStateOf { pagerState.currentPage } }
+    var expanded by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
-    MaterialTheme {
-        Scaffold(
-            scaffoldState = scaffoldState,
-            topBar = {
-                TopAppBar(
-                    title = { Text(text = "My App") },
-                    navigationIcon = {
-                        IconButton(onClick = {
-                            scope.launch {
-                                scaffoldState.drawerState.open()
-                            }
-                        }) {
-                            Icon(Icons.Filled.Menu, contentDescription = "Menu Icon")
+    Scaffold(
+      //  scaffoldState = scaffoldState,
+        topBar = {
+            TopAppBar(
+                title = { Text("My App") },
+                navigationIcon = {
+                    IconButton(onClick = {
+                        scope.launch {
+                            scaffoldState.drawerState.open()
                         }
-                    },
-                    actions = {
-                        IconButton(onClick = { /*TODO*/ }) {
-                            Icon(Icons.Filled.Search, contentDescription = "Search")
-                        }
-                        IconButton(onClick = { /*TODO*/ }) {
-                            Icon(Icons.Filled.Share, contentDescription = "Share")
-                        }
-                        IconButton(onClick = { expanded = true }) {
-                            Icon(Icons.Filled.MoreVert, contentDescription = "Overflow")
-                        }
-                        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                            DropdownMenuItem(onClick = {
-                                expanded = false
-                                val intent = Intent(context, ThirdActivity::class.java)
-                                context.startActivity(intent)
-                            }) {
-                                Text(text = "Settings")
-                            }
-                            DropdownMenuItem(onClick = { expanded = false }) {
-                                Text(text = "Privacy")
-                            }
-                        }
-                    },
-                    backgroundColor = MaterialTheme.colorScheme.secondary
-                )
-            },
-            bottomBar = {
-//                BottomAppBar(
-//                    backgroundColor = MaterialTheme.colorScheme.secondary,
-//                    content = {
-//                        IconButton(onClick = {
+                    }) {
+                        Icon(Icons.Default.Menu, contentDescription = "Menu Icon")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(Icons.Default.Search, contentDescription = "Search")
+                    }
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(Icons.Default.Share, contentDescription = "Share")
+                    }
+                    IconButton(onClick = { expanded = true }) {
+                        Icon(Icons.Default.MoreVert, contentDescription = "More Options")
+                    }
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+//                        DropdownMenuItem(onClick = {
+//                            expanded = false
 //                            val intent = Intent(context, ThirdActivity::class.java)
 //                            context.startActivity(intent)
 //                        }) {
-//                            Icon(Icons.Filled.Call, contentDescription = "Call")
+//                            Text("Settings")
 //                        }
-//                        IconButton(onClick = { /*TODO*/ }) {
-//                            Icon(Icons.Filled.Email, contentDescription = "Email")
+//                        DropdownMenuItem(onClick = { expanded = false }) {
+//                            Text("Privacy")
 //                        }
-//                    }
-//                )
-
-
-                BottomNavigation(
-                    backgroundColor = MaterialTheme.colorScheme.inverseOnSurface,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    HomeTabs.entries.forEachIndexed { index, currentTab ->
-                        BottomNavigationItem(
-                            selected = selectedTabIndex.value == index,
-                            onClick = {
-                                scope.launch {
-                                    pagerState.animateScrollToPage(index)
-                                }
-                            },
-                            icon = {
-                                Icon(
-                                    imageVector = if (selectedTabIndex.value == index)
-                                        currentTab.selectedIcon else currentTab.unselectedIcon,
-                                    contentDescription = "Bottom Tab Icon"
-                                )
-                            },
-                            label = { Text(text = currentTab.text) },
-                            selectedContentColor = MaterialTheme.colorScheme.inversePrimary,
-                            unselectedContentColor = MaterialTheme.colorScheme.onSurface
-                        )
                     }
                 }
-
-
-
-
-            },
-            floatingActionButton = {
-                FloatingActionButton(onClick = {
-                    val intent = Intent(context, ThirdActivity::class.java)
-                    context.startActivity(intent)
-                }) {
-                    Icon(Icons.Filled.Add, contentDescription = "FAB Icon")
-                }
-            },
-            drawerContent = {
-                Text(text = "Drawer Item 1", modifier = Modifier.padding(16.dp))
-                Text(text = "Drawer Item 2", modifier = Modifier.padding(16.dp))
-                Text(text = "Drawer Item 3", modifier = Modifier.padding(16.dp))
-                Divider()
-                Text(text = "Drawer Item 4", modifier = Modifier.padding(16.dp))
-            },
-            content = { innerPadding ->
-                Column(modifier = Modifier
-                    .padding(innerPadding)
-                    .fillMaxSize()) {
-
-
-                    HorizontalPager(
-                        state = pagerState,
-                        count = HomeTabs.entries.size, // Updated page count
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .weight(1f)
-                    ) {
-                            page ->
-                        when (page) {
-                            0 -> ShopTab() // Display the Shop tab
-                            else -> Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
-                            ) {
-                            Text(text = HomeTabs.entries[selectedTabIndex.value].text)
-                        }
+            )
+        },
+        bottomBar = {
+            BottomAppBar(
+                content = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(Icons.Default.Favorite, contentDescription = "Favorite")
+                    }
+                    Spacer(modifier = Modifier.weight(1f, true))
+                    IconButton(onClick = {
+                        val intent = Intent(context, ThirdActivity::class.java)
+                        context.startActivity(intent)
+                    }) {
+                        Icon(Icons.Default.Call, contentDescription = "Call")
                     }
                 }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                val intent = Intent(context, ThirdActivity::class.java)
+                context.startActivity(intent)
+            }) {
+                Icon(Icons.Default.Add, contentDescription = "Add FAB")
             }
-        )
-    }
+        },
+//        drawerContent = {
+//            Column(modifier = Modifier.padding(16.dp)) {
+//                Text(text = "Drawer Item 1")
+//                Text(text = "Drawer Item 2")
+//                Divider(modifier = Modifier.padding(vertical = 8.dp))
+//                Text(text = "Drawer Item 3")
+//            }
+//        },
+//        content = { innerPadding ->
+//            ShopTab(
+//                modifier = Modifier
+//                    .padding(innerPadding)
+//                    .fillMaxSize(),
+//                productViewModel = productViewModel
+//            )
+//        }
+    )
 }
 
-
 @Composable
-fun ShopTab() {
-    val shopItems = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+fun ShopTab(modifier: Modifier = Modifier, productViewModel: ProductViewModel) {
+    val shopItems by productViewModel.products.collectAsState()
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -205,30 +157,11 @@ fun ShopTab() {
     }
 }
 
-enum class HomeTabs(
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
-    val text: String
-) {
-    Shop(
-        unselectedIcon = Icons.Outlined.ShoppingCart,
-        selectedIcon = Icons.Filled.ShoppingCart,
-        text = "Shop"
-    ),
-    Favourite(
-        unselectedIcon = Icons.Outlined.FavoriteBorder,
-        selectedIcon = Icons.Filled.Favorite,
-        text = "Favourite"
-    ),
-    Profile(
-        unselectedIcon = Icons.Outlined.Person,
-        selectedIcon = Icons.Filled.Person,
-        text = "Profile"
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
-fun PreviewApp() {
+fun PreviewMyAppComponents() {
     MyAppComponents()
 }
+
+
+ ***/
