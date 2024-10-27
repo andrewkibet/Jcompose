@@ -1,4 +1,4 @@
- # Compose
+hi hi # Compose
 Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.
 
@@ -170,3 +170,5 @@ will be sent to the server using Retrofit. This data could be sent via a POST re
 
 In each of these cases, Retrofit manages the API communication, converts the API’s response (usually in JSON format) into usable Kotlin objects,
 and handles error responses.
+
+Retrofit has to apply MVVM in it's design and workflow. Retrofit has to fetch data from the server and display them to the user. This is the reason it is important to understand MVVM first so that Retrofit implementation will be easier.
