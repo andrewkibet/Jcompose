@@ -1,4 +1,4 @@
-hi hi # Compose
+ # Compose
 Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.
 
@@ -172,3 +172,10 @@ In each of these cases, Retrofit manages the API communication, converts the API
 and handles error responses.
 
 Retrofit has to apply MVVM in it's design and workflow. Retrofit has to fetch data from the server and display them to the user. This is the reason it is important to understand MVVM first so that Retrofit implementation will be easier.
+
+Do You Need MVVM for Retrofit?
+
+No, you can use Retrofit without MVVM for simple apps.
+
+Yes, for more complex apps, MVVM helps you manage network responses effectively
+
