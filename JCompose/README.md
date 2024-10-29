@@ -3,7 +3,12 @@ Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.
 
 # What are Jetpack Libraries?
-Jetpack Libraries are a suite of Android components and tools provided by Google to help developers build high-quality apps quickly and efficiently. These libraries focus on solving common problems, ensuring backward compatibility, and simplifying complex tasks. Jetpack is divided into four categories: Foundation, Architecture, Behavior, and UI.
+Jetpack Libraries are a suite of Android components and tools provided by Google to help developers build high-quality apps quickly and efficiently. These libraries focus on solving common problems, ensuring backward compatibility, and simplifying complex tasks.
+Jetpack is divided into four categories: 
+Foundation, 
+Architecture,
+Behavior, and
+UI.
 
 **Modifiers**  https://developer.android.com/jetpack/compose/modifiers#:~:text=Modifiers%20allow%20you%20to%20decorate,Add%20information%2C%20like%20accessibility%20labels <br> 
 Allow you to augment or decorate Composables. It lets you do these  sorts of things: <br>
