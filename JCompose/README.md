@@ -2,6 +2,8 @@
 Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.
 
+# What are Jetpack Libraries?
+
 **Modifiers**  https://developer.android.com/jetpack/compose/modifiers#:~:text=Modifiers%20allow%20you%20to%20decorate,Add%20information%2C%20like%20accessibility%20labels <br> 
 Allow you to augment or decorate Composables. It lets you do these  sorts of things: <br>
   1. Change the composable size, layout, shape, layout, behavior and appearance. <br>
