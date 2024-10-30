@@ -39,11 +39,7 @@ DataStore: A replacement for SharedPreferences, optimized for reactive programmi
 
 WorkManager: Manages background tasks and ensures they run reliably.
 
-
-
----
-
-3. Behavior
+**3. Behavior**
 
 These libraries support common app behaviors such as notifications and permissions.
 Examples:
@@ -54,11 +50,7 @@ Permissions: Simplifies handling runtime permissions.
 
 Notifications: Helps create consistent notifications across different devices.
 
-
-
----
-
-4. UI
+**4. UI**
 
 These libraries simplify the creation of user interfaces and enhance the look and feel of apps.
 Examples:
