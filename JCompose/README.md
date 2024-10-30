@@ -2,6 +2,81 @@
 Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.
 
+# What are Jetpack Libraries?
+Jetpack Libraries are a suite of Android components and tools provided by Google to help developers build high-quality apps quickly and efficiently. These libraries focus on solving common problems, ensuring backward compatibility, and simplifying complex tasks.
+Jetpack is divided into four categories: 
+Foundation, 
+Architecture,
+Behavior, and
+UI.
+
+**Categories of Jetpack Libraries**
+
+**1. Foundation**
+These libraries provide core functionalities and tools for building apps, such as backward compatibility and testing.
+Examples:
+
+AppCompat: Ensures backward compatibility for newer UI elements on older Android versions.
+
+Android KTX: Kotlin extensions that simplify Android code.
+
+Multidex: Helps manage multiple DEX files for apps with large codebases.
+
+Test libraries: Frameworks for writing unit and UI tests.
+
+**2. Architecture**
+
+These libraries help implement MVVM and other architecture patterns to build maintainable and scalable apps.
+Examples:
+
+ViewModel: Stores UI-related data across configuration changes (like screen rotations).
+
+LiveData: An observable data holder class that updates the UI automatically.
+
+Room: An SQLite-based ORM library for easier database management.
+
+DataStore: A replacement for SharedPreferences, optimized for reactive programming.
+
+WorkManager: Manages background tasks and ensures they run reliably.
+
+**3. Behavior**
+
+These libraries support common app behaviors such as notifications and permissions.
+Examples:
+
+Navigation: Manages in-app navigation and supports deep linking.
+
+Permissions: Simplifies handling runtime permissions.
+
+Notifications: Helps create consistent notifications across different devices.
+
+**4. UI**
+
+These libraries simplify the creation of user interfaces and enhance the look and feel of apps.
+Examples:
+
+ConstraintLayout: A flexible layout for designing complex UIs.
+
+Compose UI: Google's modern toolkit for building native UI with declarative components.
+
+Fragment: Allows the use of multiple screens within a single activity.
+
+Paging: Efficiently loads and displays large datasets in chunks.
+
+
+**Advantages of Jetpack Libraries**
+
+Backward Compatibility: Works across different Android versions.
+
+Modular: You can use only the libraries you need.
+
+Faster Development: Simplifies common tasks and reduces boilerplate code.
+
+Lifecycle Awareness: Integrates lifecycle-aware components for better memory management.
+
+
+Jetpack simplifies modern Android development and promotes the use of best practices like MVVM, Kotlin-first APIs, and declarative UI with Jetpack Compose.
+
 **Modifiers**  https://developer.android.com/jetpack/compose/modifiers#:~:text=Modifiers%20allow%20you%20to%20decorate,Add%20information%2C%20like%20accessibility%20labels <br> 
 Allow you to augment or decorate Composables. It lets you do these  sorts of things: <br>
   1. Change the composable size, layout, shape, layout, behavior and appearance. <br>
@@ -170,3 +245,12 @@ will be sent to the server using Retrofit. This data could be sent via a POST re
 
 In each of these cases, Retrofit manages the API communication, converts the API’s response (usually in JSON format) into usable Kotlin objects,
 and handles error responses.
+
+Retrofit has to apply MVVM in it's design and workflow. Retrofit has to fetch data from the server and display them to the user. This is the reason it is important to understand MVVM first so that Retrofit implementation will be easier.
+
+Do You Need MVVM for Retrofit?
+
+No, you can use Retrofit without MVVM for simple apps.
+
+Yes, for more complex apps, MVVM helps you manage network responses effectively
+
