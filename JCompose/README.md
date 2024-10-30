@@ -64,10 +64,7 @@ Fragment: Allows the use of multiple screens within a single activity.
 Paging: Efficiently loads and displays large datasets in chunks.
 
 
-
----
-
-Advantages of Jetpack Libraries
+**Advantages of Jetpack Libraries**
 
 Backward Compatibility: Works across different Android versions.
 
