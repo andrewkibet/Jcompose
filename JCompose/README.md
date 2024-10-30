@@ -10,10 +10,9 @@ Architecture,
 Behavior, and
 UI.
 
-Categories of Jetpack Libraries
+**Categories of Jetpack Libraries**
 
-1. Foundation
-
+**1. Foundation**
 These libraries provide core functionalities and tools for building apps, such as backward compatibility and testing.
 Examples:
 
@@ -25,11 +24,7 @@ Multidex: Helps manage multiple DEX files for apps with large codebases.
 
 Test libraries: Frameworks for writing unit and UI tests.
 
-
-
----
-
-2. Architecture
+**2. Architecture**
 
 These libraries help implement MVVM and other architecture patterns to build maintainable and scalable apps.
 Examples:
