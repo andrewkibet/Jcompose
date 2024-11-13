@@ -212,7 +212,14 @@ as LiveData and ViewModel to handle responses and UI updates safely.
 
     ` implementation 'com.squareup.retrofit2:converter-gson:2.9.0'`
 
-2. Define API Interface
+2. Define API Interface (import retrofit2.Call;
+import retrofit2.http.GET;
+
+public interface ApiService {
+    @GET("users")
+    Call<List<User>> getUsers();
+}
+)
 3. Initialize Retrofit in a Singleton
 4. use Coroutines to make API Calls
 5. Observe data in your Activity or Fragment.
