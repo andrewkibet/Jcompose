@@ -248,6 +248,8 @@ and handles error responses.
 
 Retrofit has to apply MVVM in it's design and workflow. Retrofit has to fetch data from the server and display them to the user. This is the reason it is important to understand MVVM first so that Retrofit implementation will be easier.
 
+I tried towork on MVVM but it has given me challenges. The Livedata led to erros  and it has costed me alot of time, but thi is the fun of programming, LEarning through errors.
+
 Do You Need MVVM for Retrofit?
 
 No, you can use Retrofit without MVVM for simple apps.
