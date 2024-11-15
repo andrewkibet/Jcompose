@@ -263,3 +263,7 @@ No, you can use Retrofit without MVVM for simple apps.
 
 Yes, for more complex apps, MVVM helps you manage network responses effectively
 
+
+This week, i majorly worked on FTk.
+FTK -Forensic Toolkit.
+
