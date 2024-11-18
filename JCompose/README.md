@@ -267,3 +267,5 @@ Yes, for more complex apps, MVVM helps you manage network responses effectively
 This week, i majorly worked on FTk.
 FTK -Forensic Toolkit.
 
+**18/11/2024**
+Today I got ths error, _"Module not specified"_
