@@ -49,3 +49,6 @@ class MVVMActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview2() {
    }
+
+@Composable
+fun Andrew(){}
