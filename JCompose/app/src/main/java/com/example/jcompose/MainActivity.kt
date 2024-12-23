@@ -179,7 +179,7 @@ class MainActivity : ComponentActivity() {
                     style = MaterialTheme.typography.body2.copy(color = Color.Red),
                     modifier = Modifier
                         .background(Color.Gray, shape = CircleShape)
-                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                        .padding(horizontal = 9.dp, vertical = 4.dp)
                 )
             }
         }
