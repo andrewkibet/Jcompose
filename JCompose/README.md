@@ -101,7 +101,7 @@ Steps to Add Items to the "Shop" Tab:
 
 ###### Explanation:
 ShopTab Composable: This function creates a list of 
-items using LazyColumn and displays the names.
+items using LazyColumn and displays the names.Lazycolumn is an alternative to recyclerrview.
 
 
 Other Topics:
