@@ -4,4 +4,7 @@
     <string name="title_activity_third">ThirdActivity</string>
     <string name="title_activity_mvvmactivity">MVVMActivity</string>
     <string name="title_activity_list">ListActivity</string>
+
+<string name="titles">Title</string>
+
 </resources>
