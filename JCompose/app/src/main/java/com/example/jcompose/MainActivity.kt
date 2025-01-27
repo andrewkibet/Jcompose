@@ -154,6 +154,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
+                .background(black)
                 .offset(12.dp,12.dp) // I addedthis but Ihave nottested.
                 .clickable { onClick() },
             verticalAlignment = Alignment.CenterVertically
