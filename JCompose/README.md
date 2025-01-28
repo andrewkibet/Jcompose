@@ -161,6 +161,8 @@ private val tasks = mutableListOf<Task>()```
 
 I tried towork on MVVM but it has given me challenges. The Livedata led to erros  and it has costed me alot of time, but thi is the fun of programming, LEarning through errors.
 
+Working with LiveData and MVVM can sometimes be challenging, especially when dealing with dependencies or debugging issues. If LiveData has been causing persistent issues, it is good to consider switching to StateFlow or MutableState for state management in Jetpack Compose. These are more Compose-friendly and often simpler to work with.
+
 
 
 
