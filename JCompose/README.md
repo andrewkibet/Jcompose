@@ -159,6 +159,11 @@ private val tasks = mutableListOf<Task>()```
 }
 ```
 
+I tried towork on MVVM but it has given me challenges. The Livedata led to erros  and it has costed me alot of time, but thi is the fun of programming, LEarning through errors.
+
+
+
+
 # REST APIS
 RESTful APIs **(Representational State Transfer)** are web services that adhere to the constraints and principles of REST, 
 an architectural style for designing networked applications. They use HTTP requests to perform standard CRUD **(Create, Read, Update, Delete)** 
@@ -255,7 +260,6 @@ and handles error responses.
 
 Retrofit has to apply MVVM in it's design and workflow. Retrofit has to fetch data from the server and display them to the user. This is the reason it is important to understand MVVM first so that Retrofit implementation will be easier.
 
-I tried towork on MVVM but it has given me challenges. The Livedata led to erros  and it has costed me alot of time, but thi is the fun of programming, LEarning through errors.
 
 Do You Need MVVM for Retrofit?
 
