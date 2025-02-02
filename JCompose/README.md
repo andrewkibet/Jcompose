@@ -3,7 +3,7 @@ Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.Stil working on it.
 
 # What are Jetpack Libraries?
-Jetpack Libraries are a suite of Android components and tools provided by Google to help developers build high-quality apps quickly and efficiently. These libraries focus on solving common problems, ensuring backward compatibility, and simplifying complex tasks.
+Jetpack Libraries are a suite of Android components and tools provided by Google to help developers build high-quality apps quickly and efficiently. These libraries focus on solving common problems, ensuring backward compatibility, and simplifying complex tasks.mmmm
 Jetpack is divided into four categories: 
 Foundation, 
 Architecture,
