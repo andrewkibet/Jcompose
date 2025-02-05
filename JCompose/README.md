@@ -274,9 +274,6 @@ Yes, for more complex apps, MVVM helps you manage network responses effectively
 This week, i majorly worked on FTk.
 FTK -Forensic Toolkit.
 
-**18/11/2024**
-Today I got ths error, _"Module not specified"_
- this error is easy to fix.
+Retrofit: A Powerful HTTP Client for Android
 
-
-it used to work well. let me correct the errors.
+Retrofit is a type-safe HTTP client for Android and Java developed by Square. It simplifies network requests by converting API responses directly into Kotlin or Java objects.
