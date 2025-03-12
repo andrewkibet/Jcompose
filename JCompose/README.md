@@ -285,11 +285,17 @@ Text is a central piece of any UI, and Jetpack Compose makes it easier to displa
 
 As its base, Compose provides a BasicText and BasicTextField, which are the barebones to display text and handle user input. At a higher level, Compose provides Text and TextField, which are composables following Material Design guidelines. It’s recommended to use them as they have the right look and feel for users on Android, and includes other options to simplify their customization without having to write a lot of code.
 
-## A Modal Drawer** in Jetpack Compose is a type of navigation drawer that slides in from the side of the screen and blocks interaction with the main content until it is dismissed. It is commonly used for app navigation, settings, or additional options.
+## A Modal Drawer 
+in Jetpack Compose is a type of navigation drawer that slides in from the side of the screen and blocks interaction with the main content until it is dismissed. It is commonly used for app navigation, settings, or additional options.
 
 ### Key Features of a Modal Drawer:
 Overlays Main Content: When opened, it covers part of the screen and requires user action to close.
 Blocks Interaction: The user cannot interact with the main content until they close the drawer.
 Typically Opened via Button or Gesture: A button (like a menu icon) or a swipe gesture can trigger it.
 Dismissable: Can be closed by tapping outside the drawer, using a close button, or swiping.
+
+### Common Use Cases:
+App Navigation: Provides access to different sections of an app.
+Settings or Options: Displays additional features without cluttering the main UI.
+User Account Information: Shows user profile details and actions (like logout).
 
