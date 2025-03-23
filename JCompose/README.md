@@ -114,7 +114,7 @@ Other Topics:
 
 #  **MVVM**   
 
-   **Understanding the Components**
+3   **Understanding the Components**
 1. **Model**:Represents the data and business logic of the application.
    It interacts with the database, network, and other data sources.
    Contains data classes and repository classes to manage data.
@@ -299,3 +299,14 @@ App Navigation: Provides access to different sections of an app.
 Settings or Options: Displays additional features without cluttering the main UI.
 User Account Information: Shows user profile details and actions (like logout).
 
+## Networking in Android Development
+Networking in Android refers to communication between an Android app and external servers or APIs over the internet. It allows apps to fetch or send data, enabling features like retrieving user data, posting updates, and syncing with cloud services.
+
+🔹 Common Use Cases:
+Fetching data from RESTful APIs (e.g., weather, news, user profiles)
+
+Uploading/downloading files (images, videos, PDFs)
+
+Real-time communication (chat apps, live notifications)
+
+Authentication and authorization (OAuth, Firebase)
