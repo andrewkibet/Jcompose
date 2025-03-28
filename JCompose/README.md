@@ -114,7 +114,7 @@ Other Topics:
 
 #  **MVVM**   
 
-   **Understanding the Components**
+3   **Understanding the Components**
 1. **Model**:Represents the data and business logic of the application.
    It interacts with the database, network, and other data sources.
    Contains data classes and repository classes to manage data.
@@ -279,11 +279,34 @@ Retrofit: A Powerful HTTP Client for Android
 Retrofit is a type-safe HTTP client for Android and Java developed by Square. It simplifies network requests by converting API responses directly into Kotlin or Java objects.
 
 
-**Text in Compose **
-
-
+**Text in Compose**
 
 Text is a central piece of any UI, and Jetpack Compose makes it easier to display or write text. Compose leverages composition of its building blocks, meaning you don’t need to overwrite properties and methods or extend big classes to have a specific composable design and logic working the way you want.
 
 As its base, Compose provides a BasicText and BasicTextField, which are the barebones to display text and handle user input. At a higher level, Compose provides Text and TextField, which are composables following Material Design guidelines. It’s recommended to use them as they have the right look and feel for users on Android, and includes other options to simplify their customization without having to write a lot of code.
 
+## A Modal Drawer 
+in Jetpack Compose is a type of navigation drawer that slides in from the side of the screen and blocks interaction with the main content until it is dismissed. It is commonly used for app navigation, settings, or additional options.
+
+### Key Features of a Modal Drawer:
+Overlays Main Content: When opened, it covers part of the screen and requires user action to close.
+Blocks Interaction: The user cannot interact with the main content until they close the drawer.
+Typically Opened via Button or Gesture: A button (like a menu icon) or a swipe gesture can trigger it.
+Dismissable: Can be closed by tapping outside the drawer, using a close button, or swiping.
+
+### Common Use Cases:
+App Navigation: Provides access to different sections of an app.
+Settings or Options: Displays additional features without cluttering the main UI.
+User Account Information: Shows user profile details and actions (like logout).
+
+## Networking in Android Development
+Networking in Android refers to communication between an Android app and external servers or APIs over the internet. It allows apps to fetch or send data, enabling features like retrieving user data, posting updates, and syncing with cloud services.
+
+🔹 Common Use Cases:
+Fetching data from RESTful APIs (e.g., weather, news, user profiles)
+
+Uploading/downloading files (images, videos, PDFs)
+
+Real-time communication (chat apps, live notifications)
+
+Authentication and authorization (OAuth, Firebase)

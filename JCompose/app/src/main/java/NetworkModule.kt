@@ -1,10 +1,17 @@
-package com.example.jcompose.network
+package com.example.myapplication
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+
+// Define the Product data class
+data class Product(
+    val id: Int,
+    val title: String,
+    val description: String,
+    val price: Double,
+    val image: String
+)
 
 // Define API endpoint
 interface ApiService {
