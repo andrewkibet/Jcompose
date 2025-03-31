@@ -26,7 +26,6 @@ import androidx.lifecycle.ViewModel
 //import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 
@@ -107,12 +106,16 @@ actions = {
     bottomBar = {
         BottomAppBar(
             content = {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { /*TODO*/
+                    val intent= Intent(context, MathGame::class.java)
+                    context.startActivity(intent)
+                })
+                {
                     Icon(Icons.Default.Favorite, contentDescription = "Favorite")
                 }
                 Spacer(modifier = Modifier.weight(1f, true))
                 IconButton(onClick = {
-                    val intent = Intent(context, TwoActivity::class.java)
+                    val intent = Intent(context, FomikoUi::class.java)
                     context.startActivity(intent)
                 }) {
                     Icon(Icons.Default.Call, contentDescription = "Call")

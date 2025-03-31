@@ -263,7 +263,7 @@ fun ThirdComponents() {
                 },
                 floatingActionButton = {
                     FloatingActionButton(onClick = {
-                        val intent = Intent(context, MainActivity::class.java)
+                        val intent = Intent(context, ThirdAcivity::class.java)
                         context.startActivity(intent)
                     }) {
                         Icon(Icons.Filled.Add, contentDescription = "FAB Icon")

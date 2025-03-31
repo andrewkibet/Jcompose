@@ -18,7 +18,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=Default, isTemplate=false, identifier=serial=127.0.0.1:62001;connection=4086c21f)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -41,18 +41,25 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nomad/Documents/Github/MyApp/app/src/main/java/com/example/myapplication&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nomad/Documents/Github/MyApp/app/src/main/res/drawable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nomad\Documents\Github\MyApp\app\src\main\res\drawable" />
       <recent name="C:\Users\Nomad\Documents\Github\MyApp\app\src\main\java\com\example\myapplication" />
     </key>
     <key name="android.template.1234919219">
       <recent name="com.example.myapplication.ui.theme" />
     </key>
+    <key name="android.template.1640018601">
+      <recent name="com.example.myapplication" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nomad\Documents\Github\MyApp\app\src\main\java\com\example\myapplication" />
+    </key>
+    <key name="android.template.-1939433761">
+      <recent name="com.example.myapplication" />
     </key>
     <key name="android.template.28653447">
       <recent name="com.example.myapplication" />
@@ -144,5 +151,21 @@
       <updated>1742898198595</updated>
     </task>
     <servers />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.myapplication">
+          <value>
+            <CheckInfo lastCheckTimestamp="1743410359842" />
+          </value>
+        </entry>
+        <entry key="com.example.myapplication.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1743410359842" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
