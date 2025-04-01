@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="title_activity_two">TwoActivity</string>
-    <string name="title_activity_third_acivity">ThirdAcivity</string>
-    <string name="title_activity_four">FourActivity</string>
-    <string name="title_activity_fomiko_ui">FomikoUi</string>
-    <string name="title_activity_main2">MainActivity2</string>
-    <string name="title_activity_math_game">MathGame</string>
+    <string name="app_name" translatable="false">JetPack Compose</string>
+    <string name="title_activity_two" translatable="false">TwoActivity</string>
+    <string name="title_activity_third_acivity" translatable="false">ThirdAcivity</string>
+    <string name="title_activity_four" translatable="false">FourActivity</string>
+    <string name="title_activity_fomiko_ui" translatable="false">FomikoUi</string>
+    <string name="title_activity_main2" translatable="false">MainActivity2</string>
+    <string name="title_activity_math_game" translatable="false">MathGame</string>
 </resources>
