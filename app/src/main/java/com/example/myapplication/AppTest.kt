@@ -1,47 +1,47 @@
 package com.example.myapplication
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.ui.theme.JetPackComposeTheme
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import com.example.myapplication.MainActivity
+import org.junit.Rule
+import org.junit.Test
 
-class AppTest : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            JetPackComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+class AppTest {
+
+    @get:Rule
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    @Test
+    fun app_launches() {
+        // Check app launches at the correct destination
+        composeTestRule.onNodeWithText("HOME").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Android's picks").assertIsDisplayed()
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    @Test
+    fun app_canNavigateToAllScreens() {
+        // Check app launches at HOME
+        composeTestRule.onNodeWithText("HOME").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Android's picks").assertIsDisplayed()
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview2() {
-    JetPackComposeTheme {
-        Greeting("Android")
+        // Navigate to Search
+        composeTestRule.onNodeWithText("SEARCH").performClick().assertIsDisplayed()
+        composeTestRule.onNodeWithText("Categories").assertIsDisplayed()
+
+        // Navigate to Cart
+        composeTestRule.onNodeWithText("MY CART").performClick().assertIsDisplayed()
+        composeTestRule.onNodeWithText("Order (3 items)").assertIsDisplayed()
+
+        // Navigate to Profile
+        composeTestRule.onNodeWithText("PROFILE").performClick().assertIsDisplayed()
+        composeTestRule.onNodeWithText("This is currently work in progress").assertIsDisplayed()
+    }
+
+    @Test
+    fun app_canNavigateToDetailPage() {
+        composeTestRule.onNodeWithText("Chips").performClick()
+        composeTestRule.onNodeWithText("Lorem ipsum", substring = true).assertIsDisplayed()
     }
 }
