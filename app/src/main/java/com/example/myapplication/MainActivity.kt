@@ -87,7 +87,7 @@ actions = {
     IconButton(onClick = { /*TODO*/ }) {
         Icon(Icons.Default.Share, contentDescription = "Share")
     }
-    IconButton(onClick = { expanded = true }) {
+    IconButton(onClick = { expanded = true}) {
 
     }
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
@@ -115,7 +115,7 @@ actions = {
                 }
                 Spacer(modifier = Modifier.weight(1f, true))
                 IconButton(onClick = {
-                    val intent = Intent(context, FomikoUi::class.java)
+                    val intent = Intent(context, GameActivity::class.java)
                     context.startActivity(intent)
                 }) {
                     Icon(Icons.Default.Call, contentDescription = "Call")
