@@ -40,7 +40,7 @@ fun TapGameScreen() {
     LaunchedEffect(isGameRunning) {
         if (isGameRunning) {
             while (timeLeft > 0) {
-                delay(1000)
+                delay(2000)
                 timeLeft--
             }
             isGameRunning = false
