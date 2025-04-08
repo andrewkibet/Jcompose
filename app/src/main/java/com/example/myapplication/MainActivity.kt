@@ -75,7 +75,7 @@ fun MyAppComponents() {
                     {
                         Icon(Icons.Default.Menu, contentDescription = "Menu Icon")
                     }
-                    Icon(Icons.Default.MoreVert, contentDescription = "More Options")
+                    Icon(Icons.Default.MoreVert, contentDescription = " Options")
                 },
 
 
