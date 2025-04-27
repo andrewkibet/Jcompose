@@ -1,4 +1,11 @@
- # Compose
+
+
+
+..When you use Material 3 in Jetpack Compose, you get:
+
+New components (like AssistChip, FilledTonalButton, CenterAlignedTopAppBar, etc.)
+
+New theming system (including dynamic colors) # Compose
 Has its foundations  of Jetpack Compose to Advanced levels.
 Though currently, the apps still has basic stuff.Stil working on it.
 Advance levels 
