@@ -328,4 +328,5 @@ New theming system (including dynamic colors)
 
 
 
-A database in Android development is used to store and manage app data locally on the device. The most commonly used database is Room, which is a modern abstraction over SQLite. It allows developers to define tables and queries using annotations and integrates well with Jetpack components like ViewModel and LiveData. For simple key-value storage, DataStore is preferred. These tools help apps keep data persistent even after the app is closed or the device is restarted.
+A database in Android development is used to store and manage app data locally on the device. The most commonly used database is Room, which is a modern abstraction over SQLite.
+It allows developers to define tables and queries using annotations and integrates well with Jetpack components like ViewModel and LiveData. For simple key-value storage, DataStore is preferred. These tools help apps keep data persistent even after the app is closed or the device is restarted.
