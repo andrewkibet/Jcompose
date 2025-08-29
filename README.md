@@ -54,7 +54,7 @@ Notifications: Helps create consistent notifications across different devices.
 
 **4. UI**
 
-These libraries simplify the creation of user interfaces and enhance the look and feel of apps.
+These libraries simplify the creation of user interfaces and enhance the look and feel of apps. User Interface
 Examples:
 
 ConstraintLayout: A flexible layout for designing complex UIs.
