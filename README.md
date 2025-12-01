@@ -75,6 +75,7 @@ Modular: You can use only the libraries you need.
 Faster Development: Simplifies common tasks and reduces boilerplate code.
 
 Lifecycle Awareness: Integrates lifecycle-aware components for better memory management.
+Jetpack makes development easy and fast.
 
 
 Jetpack simplifies modern Android development and promotes the use of best practices like MVVM, Kotlin-first APIs, and declarative UI with Jetpack Compose.
