@@ -14,6 +14,8 @@ UI.
 
 **Categories of Jetpack Libraries**
 
+using other conventionsl means to develop apps
+
 **1. Foundation**
 These libraries provide core functionalities and tools for building apps, such as backward compatibility and testing.
 Examples:
